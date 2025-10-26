@@ -34,12 +34,16 @@ export function Login() {
     }
   };
 
+  const handleClose = () => {
+    router.back();
+  };
+
   return (
     <div className="fixed inset-0 bg-background bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 relative">
         {/* Close Button */}
         <button
-          // onClick={onClose}
+          onClick={handleClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
         >
           <X size={24} />
