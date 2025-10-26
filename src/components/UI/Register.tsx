@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { X, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export function Register() {
   const [fullName, setFullName] = useState('');
@@ -11,8 +10,6 @@ export function Register() {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
-  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,16 +20,12 @@ export function Register() {
     console.log('Google Sign Up');
   };
 
-  const handleClose = () => {
-    router.back();
-  };
-
   return (
     <div className="fixed inset-0 bg-background bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 relative">
         {/* Close Button */}
         <button
-          onClick={handleClose}
+          // onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
         >
           <X size={24} />

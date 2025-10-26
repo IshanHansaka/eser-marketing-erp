@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { X, Eye, EyeOff } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export function Login() {
@@ -10,32 +9,10 @@ export function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const router = useRouter();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Handle login logic here
     console.log('Login:', { email, password });
-
-    switch (email) {
-      case 'employee@gmail.com':
-        router.push('/employee/dashboard');
-        break;
-
-      case 'customer@gmail.com':
-        router.push('/customer/dashboard');
-        break;
-
-      case 'admin@gmail.com':
-        router.push('/admin/dashboard');
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const handleClose = () => {
-    router.back();
   };
 
   return (
@@ -43,7 +20,7 @@ export function Login() {
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 relative">
         {/* Close Button */}
         <button
-          onClick={handleClose}
+          // onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
         >
           <X size={24} />
