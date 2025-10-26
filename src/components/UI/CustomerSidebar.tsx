@@ -23,7 +23,6 @@ interface MenuItem {
 const CustomerSidebar = () => {
     const [selectedItem, setSelectedItem] = useState<string>('Dashboard');
     const pathname = usePathname();
-    const router = useRouter();
 
     const menuItems: MenuItem[] = [
         { name: 'Dashboard', icon: BarChart3, href: '/Customer/dashboard' },
@@ -50,7 +49,7 @@ const CustomerSidebar = () => {
             width={90}
             height={90}
             className="cursor-pointer"
-            onClick={() => router.push('/')}
+    
           />
         </div>
 

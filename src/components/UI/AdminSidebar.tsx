@@ -53,7 +53,6 @@ const EmployeeSidebar = () => {
             width={90}
             height={90}
             className="cursor-pointer"
-            onClick={() => router.push('/')}
           />
         </div>
 
