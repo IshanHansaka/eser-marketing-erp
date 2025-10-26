@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { X, Eye, EyeOff } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export function Login() {
@@ -9,10 +10,28 @@ export function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  const router = useRouter();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
     console.log('Login:', { email, password });
+
+    switch (email) {
+      case 'employee@gmail.com':
+        router.push('/employee/dashboard');
+        break;
+
+      case 'customer@gmail.com':
+        router.push('/customer/dashboard');
+        break;
+
+      case 'admin@gmail.com':
+        router.push('/admin/dashboard');
+        break;
+
+      default:
+        break;
+    }
   };
 
   return (
