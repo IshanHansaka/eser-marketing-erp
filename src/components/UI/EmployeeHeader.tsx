@@ -9,30 +9,29 @@ export default function EmployeeHeader() {
   const [notifications, setNotifications] = useState([
     {
       id: 1,
-      title:
-        'New request (RQ-008) submitted by Dinuka Rathnayake for Leg Press Machine.',
-      date: 'Sep 28 2025',
-    },
-    {
-      id: 2,
-      title: 'Repair work for Rowing Machine (RQ-004) has started.',
+      title: 'You have been assigned to repair Treadmill (RQ-005).',
       date: 'Sep 25 2025',
     },
     {
-      id: 3,
-      title: 'Employee Ishara Fernando requested 2 days of casual leave.',
+      id: 2,
+      title: 'Your leave from Oct 26–27 has been approved by Ashen Perera.',
       date: 'Sep 15 2025',
+    },
+    {
+      id: 3,
+      title: 'You successfully completed repair RQ-007 (Leg Press Machine).',
+      date: 'Sep 11 2025',
     },
     {
       id: 4,
       title:
-        'Order #ORD-006 has been successfully delivered to Tharindu Silva.',
-      date: 'Sep 12 2025',
+        ' Your leave request for Oct 30–31 was rejected by Ashen Perera.',
+      date: 'Sep 9 2025',
     },
     {
       id: 5,
       title:
-        'Delivery for Order #ORD-007 has been delayed due to weather conditions.',
+        'New equipment parts have arrived in the storage room.',
       date: 'Sep 5 2025',
     },
   ]);

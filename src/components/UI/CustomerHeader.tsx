@@ -10,30 +10,30 @@ export default function CustomerHeader() {
     {
       id: 1,
       title:
-        'New request (RQ-008) submitted by Dinuka Rathnayake for Leg Press Machine.',
-      date: 'Sep 28 2025',
-    },
-    {
-      id: 2,
-      title: 'Repair work for Rowing Machine (RQ-004) has started.',
+        'Your order #ORD-007 (Stationary Bike) has been shipped.',
       date: 'Sep 25 2025',
     },
     {
+      id: 2,
+      title: 'Your repair request for the Rowing Machine has been completed.',
+      date: 'Sep 10 2025',
+    },
+    {
       id: 3,
-      title: 'Employee Ishara Fernando requested 2 days of casual leave.',
-      date: 'Sep 15 2025',
+      title: 'Your order #ORD-006 (Dumbbell Set) has been successfully delivered.',
+      date: 'Sep 2 2025',
     },
     {
       id: 4,
       title:
-        'Order #ORD-006 has been successfully delivered to Tharindu Silva.',
-      date: 'Sep 12 2025',
+        'Your payment for Order #ORD-009 (Treadmill) has been received successfully.',
+      date: 'Sep 2 2025',
     },
     {
       id: 5,
       title:
         'Delivery for Order #ORD-007 has been delayed due to weather conditions.',
-      date: 'Sep 5 2025',
+      date: 'Sep 1 2025',
     },
   ]);
 
