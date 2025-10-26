@@ -31,7 +31,7 @@ const EmployeeSidebar = () => {
     { name: 'Employees', icon: Users, href: '/Admin/employees' },
     { name: 'Customers', icon: UserSquare, href: '/Admin/customers' },
     { name: 'Deliveries', icon: Truck, href: '/Admin/deliveries' },
-    { name: 'Repair Requests', icon: Wrench, href: '/Admin/repairs' },
+    { name: 'Repair Requests', icon: Wrench, href: '/Admin/repairRequests' },
     { name: 'Leave Requests', icon: FileText, href: '/Admin/leaves' },
     
   ];
@@ -43,7 +43,7 @@ const EmployeeSidebar = () => {
   }, [pathname]);
 
   return (
-    <div className="h-screen w-60 bg-white border-r py-6 flex flex-col justify-between fixed">
+    <div className="h-screen w-60 bg-white  py-6 flex flex-col justify-between fixed shadow-lg">
       {/* Logo */}
       <div>
         <div className="flex justify-center mb-10">

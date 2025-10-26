@@ -39,7 +39,7 @@ const EmployeeSidebar = () => {
   }, [pathname]);
 
   return (
-    <div className="h-screen w-60 bg-white border-r py-6 flex flex-col justify-between fixed">
+    <div className="h-screen w-60 bg-white  py-6 flex flex-col justify-between fixed shadow-lg">
       {/* Logo */}
       <div>
         <div className="flex justify-center mb-10">
