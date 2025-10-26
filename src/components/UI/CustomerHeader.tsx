@@ -82,7 +82,7 @@ export default function CustomerHeader() {
           alt="profile picture"
         />
         <div>
-          <p className="font-bold text-gray-800 text-lg">Kavindu Perera</p>
+          <p className="font-bold text-gray-800 text-lg">Sheron Perera</p>
           <p className="text-gray-600 text-sm">Customer</p>
         </div>
       </div>

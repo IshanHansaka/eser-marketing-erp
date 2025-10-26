@@ -75,7 +75,7 @@ export default function EmployeeHeader() {
           alt="profile picture"
         />
         <div>
-          <p className="font-bold text-gray-800 text-lg">Kavindu Perera</p>
+          <p className="font-bold text-gray-800 text-lg">Anne Perera</p>
           <p className="text-gray-600 text-sm">Employee</p>
         </div>
       </div>
