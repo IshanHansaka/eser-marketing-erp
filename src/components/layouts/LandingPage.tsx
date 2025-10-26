@@ -13,7 +13,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-gray-800">
-              Unleash Your <span className="text-blue-600">Strength</span>
+              Unleash Your <span className="text-blue-700">Strength</span>
               <br />
               with the Best Gear
             </h1>
@@ -22,7 +22,7 @@ export default function LandingPage() {
               you push past your limits. Train harder, recover faster, and feel
               stronger every day.
             </p>
-            <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+            <button className="px-8 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 font-medium">
               Shop Now
             </button>
           </div>
@@ -59,7 +59,7 @@ export default function LandingPage() {
       <section className="px-8 py-16 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-            Our <span className="text-blue-600">Best-Selling</span> Equipment
+            Our <span className="text-blue-700">Best-Selling</span> Equipment
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -79,7 +79,7 @@ export default function LandingPage() {
                   PowerMax Multi-Position Bench 250
                 </h3>
                 <p className="text-2xl font-bold">Rs. 150 000</p>
-                <button className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                <button className="w-full px-6 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 font-medium">
                   Add to Cart
                 </button>
               </div>
@@ -99,7 +99,7 @@ export default function LandingPage() {
               <div className="p-6 text-center space-y-4 text-gray-800">
                 <h3 className="font-semibold text-lg">SmartFlex 360 Bench</h3>
                 <p className="text-2xl font-bold">Rs. 100 000</p>
-                <button className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                <button className="w-full px-6 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 font-medium">
                   Add to Cart
                 </button>
               </div>
@@ -121,7 +121,7 @@ export default function LandingPage() {
                   ProFlex Adjustable Bench 3000
                 </h3>
                 <p className="text-2xl font-bold">Rs. 250 000</p>
-                <button className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
+                <button className="w-full px-6 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 font-medium">
                   Add to Cart
                 </button>
               </div>
@@ -142,7 +142,7 @@ export default function LandingPage() {
 
           <div className="space-y-6 text-gray-800">
             <h2 className="text-4xl font-bold">
-              <span className="text-blue-600">Why</span> Choose Us
+              <span className="text-blue-700">Why</span> Choose Us
             </h2>
             <p className="text-gray-600">
               Discover the Benefits That Set Us Apart and Propel Your Fitness
@@ -151,7 +151,7 @@ export default function LandingPage() {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <CheckCircle className="w-6 h-6 text-blue-600 shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-blue-700 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg mb-2">
                     Expert Guidance
@@ -164,7 +164,7 @@ export default function LandingPage() {
               </div>
 
               <div className="flex items-start space-x-4">
-                <CheckCircle className="w-6 h-6 text-blue-600 shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-blue-700 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg mb-2">Premium Value</h3>
                   <p className="text-gray-600">
@@ -175,7 +175,7 @@ export default function LandingPage() {
               </div>
 
               <div className="flex items-start space-x-4">
-                <CheckCircle className="w-6 h-6 text-blue-600 shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-blue-700 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg mb-2">
                     Best-Price Guarantee
@@ -193,7 +193,7 @@ export default function LandingPage() {
 
       {/* Newsletter Section */}
       <section className="px-8 py-16">
-        <div className="max-w-4xl mx-auto bg-blue-600 rounded-3xl p-12 text-center text-white">
+        <div className="max-w-4xl mx-auto bg-blue-700 rounded-3xl p-12 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Join Our Fitness Community
           </h2>
@@ -207,14 +207,13 @@ export default function LandingPage() {
               placeholder="Your E-mail"
               className="text-white flex-1 px-6 py-3 rounded-full focus:outline-none focus:ring-2 ring-2 focus:ring-blue-300 ring-blue-300"
             />
-            <button className="px-8 py-3 bg-white text-blue-600 rounded-full hover:bg-blue-50 font-medium whitespace-nowrap">
+            <button className="px-8 py-3 bg-white text-blue-700 rounded-full hover:bg-blue-50 font-medium whitespace-nowrap">
               Subscribe
             </button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

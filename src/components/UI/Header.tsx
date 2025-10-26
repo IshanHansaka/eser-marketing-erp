@@ -7,7 +7,7 @@ export default function Header() {
         <Image src="/eser-logo.png" width={80} height={80} alt="Eser Logo" />
       </div>
       <div className="flex items-center space-x-8">
-        <a href="#" className="text-gray-700 hover:text-gray-900">
+        <a href="#" className="text-blue-700 hover:text-blue-800">
           Products
         </a>
         <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">
@@ -24,7 +24,7 @@ export default function Header() {
         <button className="px-6 py-2 border text-gray-600 hover:text-white border-gray-600 rounded-md hover:bg-gray-800">
           Login
         </button>
-        <button className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+        <button className="px-6 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800">
           Register
         </button>
       </div>
