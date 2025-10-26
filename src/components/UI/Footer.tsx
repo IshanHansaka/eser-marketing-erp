@@ -2,7 +2,7 @@ import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-600 text-white px-8 py-12">
+    <footer className="bg-blue-700 text-white px-8 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         <div className="space-y-4">
           <h3 className="font-bold text-lg">Eser Online</h3>
@@ -17,19 +17,19 @@ export default function Footer() {
           <div className="flex space-x-4">
             <a
               href="#"
-              className="w-8 h-8 bg-white text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-50"
+              className="w-8 h-8 bg-white text-blue-700 rounded-full flex items-center justify-center hover:bg-blue-50"
             >
               <Facebook className="w-4 h-4" />
             </a>
             <a
               href="#"
-              className="w-8 h-8 bg-white text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-50"
+              className="w-8 h-8 bg-white text-blue-700 rounded-full flex items-center justify-center hover:bg-blue-50"
             >
               <Instagram className="w-4 h-4" />
             </a>
             <a
               href="#"
-              className="w-8 h-8 bg-white text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-50"
+              className="w-8 h-8 bg-white text-blue-700 rounded-full flex items-center justify-center hover:bg-blue-50"
             >
               <Twitter className="w-4 h-4" />
             </a>
@@ -78,7 +78,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-blue-500 text-center text-blue-100 text-sm">
+      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t-2 border-blue-300 text-center text-blue-100 text-sm">
         © 2025 All Right Reserved
       </div>
     </footer>
