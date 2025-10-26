@@ -98,9 +98,9 @@ export default function CustomerManagement() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-6">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-10 -mt-5">
         <h1 className="text-2xl font-bold text-[#1C398E] mb-4">Customer Management</h1>
         <p className="text-black text-sm">
           Manage all registered customers — view profiles, monitor activity, and maintain accurate customer records.
