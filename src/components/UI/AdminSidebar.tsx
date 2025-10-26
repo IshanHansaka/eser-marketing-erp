@@ -29,7 +29,7 @@ const EmployeeSidebar = () => {
   const menuItems: MenuItem[] = [
     { name: 'Dashboard', icon: BarChart3, href: '/Admin/dashboard' },
     { name: 'Employees', icon: Users, href: '/Admin/employees' },
-    { name: 'Customers', icon: UserSquare, href: '/Admin/customers' },
+    { name: 'Customers', icon: UserSquare, href: '/Admin/customerManagement' },
     { name: 'Deliveries', icon: Truck, href: '/Admin/deliveries' },
     { name: 'Repair Requests', icon: Wrench, href: '/Admin/repairRequests' },
     { name: 'Leave Requests', icon: FileText, href: '/Admin/leaves' },

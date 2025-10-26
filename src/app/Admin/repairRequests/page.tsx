@@ -119,10 +119,10 @@ export default function RepairManagement() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-lg shadow">
+      <div className="bg-white rounded-lg shadow-md">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 ">
+            <thead className="bg-gray-50 border-b border-gray-100 shadow-sm">
               <tr>
                 <th className="px-6 py-3 text-left text-md font-bold text-black   border-r border-gray-200 shadow-sm">
                   Request ID
