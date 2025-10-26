@@ -1,5 +1,6 @@
 'use client';
 
+import ApplyLeaveModal from '@/components/UI/ApplyLeaveModal';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
 
@@ -128,6 +129,11 @@ export default function Leaves() {
             Apply Leave
           </button>
         </div>
+
+        <ApplyLeaveModal
+          isOpen={showApplyModal}
+          onClose={() => setShowApplyModal(false)}
+        />
 
         <div className="overflow-x-auto">
           <table className="w-full">
