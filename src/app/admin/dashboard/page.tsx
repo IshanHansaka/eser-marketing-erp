@@ -1,7 +1,25 @@
 'use client';
 import { useState } from 'react';
-import { BarChart3, DollarSign, Users, UsersRound, Calendar } from 'lucide-react';
-import { AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import {
+  BarChart3,
+  DollarSign,
+  Users,
+  UsersRound,
+  Calendar,
+} from 'lucide-react';
+import {
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from 'recharts';
 
 interface RecentOrder {
   id: string;
@@ -19,7 +37,7 @@ const recentOrders: RecentOrder[] = [
     customer: 'RDL',
     date: 'Oct 20, 2025',
     status: 'Delivered',
-    amount: 20000
+    amount: 20000,
   },
   {
     id: '2',
@@ -27,8 +45,8 @@ const recentOrders: RecentOrder[] = [
     customer: 'Barbell Curl',
     date: 'Oct 18, 2025',
     status: 'Shipped',
-    amount: 44000
-  }
+    amount: 44000,
+  },
 ];
 
 // Data for Overall Sales Pie Chart
@@ -36,7 +54,7 @@ const overallSalesData = [
   { name: 'Rajagiriya', value: 25, color: '#EF4444' },
   { name: 'Kandy', value: 25, color: '#EC4' },
   { name: 'Kottawa', value: 25, color: '#10B981' },
-  { name: 'Nugegoda', value: 25, color: '#3B82F6' }
+  { name: 'Nugegoda', value: 25, color: '#3B82F6' },
 ];
 
 // Data for Monthly Sales Area Chart
@@ -48,7 +66,7 @@ const monthlySalesData = [
   { month: 'May', sales: 35 },
   { month: 'Jun', sales: 80 },
   { month: 'Jul', sales: 65 },
-  { month: 'Aug', sales: 75 }
+  { month: 'Aug', sales: 75 },
 ];
 
 // Data for Customer Growth Bar Chart
@@ -59,7 +77,7 @@ const customerGrowthData = [
   { month: 'Apr', customers: 65 },
   { month: 'May', customers: 45 },
   { month: 'Jun', customers: 75 },
-  { month: 'July', customers: 55 }
+  { month: 'July', customers: 55 },
 ];
 
 export default function AdminDashboard() {
@@ -69,7 +87,9 @@ export default function AdminDashboard() {
     <div className="p-8 -mt-11">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[#1C398E] mb-1">Admin Dashboard</h1>
+        <h1 className="text-2xl font-bold text-[#1C398E] mb-1">
+          Admin Dashboard
+        </h1>
         <p className="text-gray-600 text-sm">Welcome back</p>
       </div>
 
@@ -133,7 +153,9 @@ export default function AdminDashboard() {
         {/* Overall Sales - Donut Chart */}
         <div className="bg-blue-50 rounded-lg shadow p-6 border border-blue-300">
           <div className="mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Overall Sales</h3>
+            <h3 className="text-lg font-semibold text-gray-800">
+              Overall Sales
+            </h3>
             <p className="text-sm text-gray-500">{selectedPeriod}</p>
           </div>
           <div className="flex items-center justify-center">
@@ -152,12 +174,14 @@ export default function AdminDashboard() {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Legend 
-                  verticalAlign="middle" 
+                <Legend
+                  verticalAlign="middle"
                   align="right"
                   layout="vertical"
                   iconType="circle"
-                  formatter={(value) => <span className="text-sm text-gray-700">{value}</span>}
+                  formatter={(value) => (
+                    <span className="text-sm text-gray-700">{value}</span>
+                  )}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -167,7 +191,9 @@ export default function AdminDashboard() {
         {/* Monthly Sales - Area Chart */}
         <div className="bg-blue-50 rounded-lg shadow p-6 border border-blue-300">
           <div className="mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Monthly Sales</h3>
+            <h3 className="text-lg font-semibold text-gray-800">
+              Monthly Sales
+            </h3>
             <div className="mt-2">
               <p className="text-2xl font-bold text-gray-900">LKR 1M</p>
               <p className="text-sm text-gray-500">This Month +30%</p>
@@ -177,28 +203,28 @@ export default function AdminDashboard() {
             <AreaChart data={monthlySalesData}>
               <defs>
                 <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis 
-                dataKey="month" 
+              <XAxis
+                dataKey="month"
                 axisLine={false}
                 tickLine={false}
                 tick={{ fill: '#6B7280', fontSize: 12 }}
               />
-              <Tooltip 
-                contentStyle={{ 
-                  backgroundColor: 'white', 
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'white',
                   border: '1px solid #E5E7EB',
                   borderRadius: '8px',
-                  fontSize: '12px'
+                  fontSize: '12px',
                 }}
               />
-              <Area 
-                type="monotone" 
-                dataKey="sales" 
-                stroke="#3B82F6" 
+              <Area
+                type="monotone"
+                dataKey="sales"
+                stroke="#3B82F6"
                 strokeWidth={2}
                 fill="url(#colorSales)"
               />
@@ -211,7 +237,9 @@ export default function AdminDashboard() {
         {/* Customer Growth - Bar Chart */}
         <div className="bg-blue-50 rounded-lg shadow p-6 border border-blue-300">
           <div className="mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Customer Growth</h3>
+            <h3 className="text-lg font-semibold text-gray-800">
+              Customer Growth
+            </h3>
             <div className="mt-2">
               <p className="text-2xl font-bold text-gray-900">324</p>
               <p className="text-sm text-gray-500">This Year +15%</p>
@@ -219,55 +247,66 @@ export default function AdminDashboard() {
           </div>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={customerGrowthData}>
-              <XAxis 
-                dataKey="month" 
+              <XAxis
+                dataKey="month"
                 axisLine={false}
                 tickLine={false}
                 tick={{ fill: '#6B7280', fontSize: 12 }}
               />
-              <Tooltip 
-                contentStyle={{ 
-                  backgroundColor: 'white', 
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'white',
                   border: '1px solid #E5E7EB',
                   borderRadius: '8px',
-                  fontSize: '12px'
+                  fontSize: '12px',
                 }}
                 cursor={{ fill: 'rgba(59, 130, 246, 0.1)' }}
               />
-              <Bar 
-                dataKey="customers" 
-                fill="#3B82F6" 
-                radius={[8, 8, 0, 0]}
-              />
+              <Bar dataKey="customers" fill="#3B82F6" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Recent Orders */}
         <div className="p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Recent Orders</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            Recent Orders
+          </h3>
           <div className="space-y-3">
             {recentOrders.map((order) => (
-              <div key={order.id} className="flex items-center justify-between p-4 bg-blue-50 rounded-lg  border border-blue-300">
+              <div
+                key={order.id}
+                className="flex items-center justify-between p-4 bg-blue-50 rounded-lg  border border-blue-300"
+              >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-sm font-semibold text-blue-600">{order.orderNumber}</span>
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      order.status === 'Delivered' ? 'bg-green-100 text-green-800' :
-                      order.status === 'Shipped' ? 'bg-blue-100 text-blue-800' :
-                      'bg-yellow-100 text-yellow-800'
-                    }`}>
+                    <span className="text-sm font-semibold text-blue-600">
+                      {order.orderNumber}
+                    </span>
+                    <span
+                      className={`px-2 py-1 rounded text-xs font-medium ${
+                        order.status === 'Delivered'
+                          ? 'bg-green-100 text-green-800'
+                          : order.status === 'Shipped'
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-yellow-100 text-yellow-800'
+                      }`}
+                    >
                       {order.status}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-700 font-medium">{order.customer}</p>
+                  <p className="text-sm text-gray-700 font-medium">
+                    {order.customer}
+                  </p>
                   <p className="text-xs text-gray-500 flex items-center gap-1 mt-1">
                     <Calendar className="w-3 h-3" />
                     {order.date}
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-blue-600">Rs {order.amount.toLocaleString()}</p>
+                  <p className="text-lg font-bold text-blue-600">
+                    Rs {order.amount.toLocaleString()}
+                  </p>
                 </div>
               </div>
             ))}

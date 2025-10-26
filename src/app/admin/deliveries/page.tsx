@@ -20,7 +20,7 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Malsha Abeyesekara',
     contactNo: '077 123 4567',
     status: 'Shipped',
-    deliveryDate: '2025-10-23'
+    deliveryDate: '2025-10-23',
   },
   {
     id: '2',
@@ -29,7 +29,7 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Sachini Weerasinghe',
     contactNo: '070 234 0567',
     status: 'Pending',
-    deliveryDate: '2025-10-29'
+    deliveryDate: '2025-10-29',
   },
   {
     id: '3',
@@ -38,7 +38,7 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Kavindu Perera',
     contactNo: '071 223 4754',
     status: 'Shipped',
-    deliveryDate: '2025-10-23'
+    deliveryDate: '2025-10-23',
   },
   {
     id: '4',
@@ -47,7 +47,7 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Malsha Abeyesekara',
     contactNo: '077 123 4567',
     status: 'Pending',
-    deliveryDate: '2025-10-29'
+    deliveryDate: '2025-10-29',
   },
   {
     id: '5',
@@ -56,7 +56,7 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Nayana Perera',
     contactNo: '077 856 4678',
     status: 'Shipped',
-    deliveryDate: '2025-10-23'
+    deliveryDate: '2025-10-23',
   },
   {
     id: '6',
@@ -65,7 +65,7 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Naveen Abeysinghe',
     contactNo: '076 892 5670',
     status: 'Delivered',
-    deliveryDate: '2025-07-12'
+    deliveryDate: '2025-07-12',
   },
   {
     id: '7',
@@ -74,7 +74,7 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Haritha Induwara',
     contactNo: '071 983 4734',
     status: 'Shipped',
-    deliveryDate: '2025-10-23'
+    deliveryDate: '2025-10-23',
   },
   {
     id: '8',
@@ -83,30 +83,35 @@ const initialDeliveries: Delivery[] = [
     deliveryPerson: 'Sehan Nethmina',
     contactNo: '077 987 1567',
     status: 'Delivered',
-    deliveryDate: '2025-09-01'
-  }
+    deliveryDate: '2025-09-01',
+  },
 ];
 
 export default function DeliveryOverview() {
-  const [deliveries, setDeliveries] = useState<Delivery[]>(initialDeliveries);
+  const deliveries: Delivery[] = initialDeliveries;
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   // Calculate statistics
   const totalDeliveries = deliveries.length;
-  const inShippingCount = deliveries.filter(d => d.status === 'Shipped').length;
-  const completedCount = deliveries.filter(d => d.status === 'Delivered').length;
+  const inShippingCount = deliveries.filter(
+    (d) => d.status === 'Shipped'
+  ).length;
+  const completedCount = deliveries.filter(
+    (d) => d.status === 'Delivered'
+  ).length;
 
   // Filter deliveries based on search and filter
-  const filteredDeliveries = deliveries.filter(delivery => {
-    const matchesSearch = 
+  const filteredDeliveries = deliveries.filter((delivery) => {
+    const matchesSearch =
       delivery.orderId.toLowerCase().includes(searchQuery.toLowerCase()) ||
       delivery.product.toLowerCase().includes(searchQuery.toLowerCase()) ||
       delivery.deliveryPerson.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesFilter = filterStatus === 'all' || delivery.status === filterStatus;
-    
+
+    const matchesFilter =
+      filterStatus === 'all' || delivery.status === filterStatus;
+
     return matchesSearch && matchesFilter;
   });
 
@@ -127,34 +132,46 @@ export default function DeliveryOverview() {
     <div className="p-8 -mt-10">
       {/* Header */}
       <div className="mb-10">
-        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">Delivery Overview</h1>
+        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">
+          Delivery Overview
+        </h1>
         <p className="text-black text-sm">
-          Stay updated on all deliveries — track orders, view statuses, and reassign tasks as needed.
+          Stay updated on all deliveries — track orders, view statuses, and
+          reassign tasks as needed.
         </p>
       </div>
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-3 gap-20 mb-12">
         <div className="bg-white shadow-sm rounded-lg p-6">
-          <div className='flex gap-6'>
-            <div className="text-4xl font-bold text-[#1C398E] mb-2 bg-blue-100 px-4 py-2">{totalDeliveries}</div>
-            <div className="text-lg font-bold text-blue-900 mt-4">Total Deliveries</div>
+          <div className="flex gap-6">
+            <div className="text-4xl font-bold text-[#1C398E] mb-2 bg-blue-100 px-4 py-2">
+              {totalDeliveries}
+            </div>
+            <div className="text-lg font-bold text-blue-900 mt-4">
+              Total Deliveries
+            </div>
           </div>
-          
         </div>
         <div className="bg-white rounded-lg p-6 shadow-sm">
-          <div className='flex gap-6'>
-            <div className="text-4xl font-bold text-[#1C398E] mb-2 bg-blue-100 px-4 py-2">{inShippingCount}</div>
-            <div className="text-lg font-bold text-blue-900 mt-4">In Shipping</div>
+          <div className="flex gap-6">
+            <div className="text-4xl font-bold text-[#1C398E] mb-2 bg-blue-100 px-4 py-2">
+              {inShippingCount}
+            </div>
+            <div className="text-lg font-bold text-blue-900 mt-4">
+              In Shipping
+            </div>
           </div>
-          
         </div>
         <div className="bg-white shadow-sm rounded-lg p-6">
-          <div className='flex gap-6'>
-            <div className="text-4xl font-bold text-[#1C398E] mb-2 bg-blue-100 px-4 py-2">{completedCount}</div>
-            <div className="text-lg font-bold text-blue-900 mt-4">Completed Orders</div>
+          <div className="flex gap-6">
+            <div className="text-4xl font-bold text-[#1C398E] mb-2 bg-blue-100 px-4 py-2">
+              {completedCount}
+            </div>
+            <div className="text-lg font-bold text-blue-900 mt-4">
+              Completed Orders
+            </div>
           </div>
-          
         </div>
       </div>
 
@@ -184,7 +201,7 @@ export default function DeliveryOverview() {
             className="w-full pl-12 pr-4 py-3 border border-[#1C398E] rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder:text-[#1C398E]"
           />
         </div>
-        
+
         <div className="relative">
           <button
             onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -205,31 +222,53 @@ export default function DeliveryOverview() {
             </svg>
             <span className="text-gray-700">Filter</span>
           </button>
-          
+
           {isFilterOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
               <div className="p-2">
                 <button
-                  onClick={() => { setFilterStatus('all'); setIsFilterOpen(false); }}
-                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${filterStatus === 'all' ? 'bg-blue-50 text-blue-700' : ''}`}
+                  onClick={() => {
+                    setFilterStatus('all');
+                    setIsFilterOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${
+                    filterStatus === 'all' ? 'bg-blue-50 text-blue-700' : ''
+                  }`}
                 >
                   All Status
                 </button>
                 <button
-                  onClick={() => { setFilterStatus('Shipped'); setIsFilterOpen(false); }}
-                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${filterStatus === 'Shipped' ? 'bg-blue-50 text-blue-700' : ''}`}
+                  onClick={() => {
+                    setFilterStatus('Shipped');
+                    setIsFilterOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${
+                    filterStatus === 'Shipped' ? 'bg-blue-50 text-blue-700' : ''
+                  }`}
                 >
                   Shipped
                 </button>
                 <button
-                  onClick={() => { setFilterStatus('Pending'); setIsFilterOpen(false); }}
-                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${filterStatus === 'Pending' ? 'bg-blue-50 text-blue-700' : ''}`}
+                  onClick={() => {
+                    setFilterStatus('Pending');
+                    setIsFilterOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${
+                    filterStatus === 'Pending' ? 'bg-blue-50 text-blue-700' : ''
+                  }`}
                 >
                   Pending
                 </button>
                 <button
-                  onClick={() => { setFilterStatus('Delivered'); setIsFilterOpen(false); }}
-                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${filterStatus === 'Delivered' ? 'bg-blue-50 text-blue-700' : ''}`}
+                  onClick={() => {
+                    setFilterStatus('Delivered');
+                    setIsFilterOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-2 rounded hover:bg-gray-100 ${
+                    filterStatus === 'Delivered'
+                      ? 'bg-blue-50 text-blue-700'
+                      : ''
+                  }`}
                 >
                   Delivered
                 </button>
@@ -281,7 +320,11 @@ export default function DeliveryOverview() {
                     {delivery.contactNo}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    <span className={`px-3 py-1 rounded text-sm font-medium ${getStatusColor(delivery.status)}`}>
+                    <span
+                      className={`px-3 py-1 rounded text-sm font-medium ${getStatusColor(
+                        delivery.status
+                      )}`}
+                    >
                       {delivery.status}
                     </span>
                   </td>
@@ -292,7 +335,10 @@ export default function DeliveryOverview() {
               ))}
               {filteredDeliveries.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                  <td
+                    colSpan={6}
+                    className="px-6 py-8 text-center text-gray-500"
+                  >
                     No deliveries found
                   </td>
                 </tr>

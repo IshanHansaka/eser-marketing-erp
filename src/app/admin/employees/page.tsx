@@ -18,7 +18,7 @@ const initialEmployees: Employee[] = [
     email: 'alexdoe@gmail.com',
     phone: '070 345 6090',
     rewardPoints: 20,
-    isActive: true
+    isActive: true,
   },
   {
     id: '2',
@@ -26,7 +26,7 @@ const initialEmployees: Employee[] = [
     email: 'sachini@gmail.com',
     phone: '070 234 0567',
     rewardPoints: 25,
-    isActive: true
+    isActive: true,
   },
   {
     id: '3',
@@ -34,7 +34,7 @@ const initialEmployees: Employee[] = [
     email: 'kavinuperera@gmail.com',
     phone: '071 223 4754',
     rewardPoints: 18,
-    isActive: true
+    isActive: true,
   },
   {
     id: '4',
@@ -42,7 +42,7 @@ const initialEmployees: Employee[] = [
     email: 'naveenabey@gmail.com',
     phone: '076 892 5670',
     rewardPoints: 30,
-    isActive: true
+    isActive: true,
   },
   {
     id: '5',
@@ -50,7 +50,7 @@ const initialEmployees: Employee[] = [
     email: 'harithaind@gmail.com',
     phone: '071 983 4734',
     rewardPoints: 14,
-    isActive: true
+    isActive: true,
   },
   {
     id: '6',
@@ -58,25 +58,27 @@ const initialEmployees: Employee[] = [
     email: 'sehan@gmail.com',
     phone: '077 987 1567',
     rewardPoints: 28,
-    isActive: true
-  }
+    isActive: true,
+  },
 ];
 
 export default function EmployeeManagement() {
   const [employees, setEmployees] = useState<Employee[]>(initialEmployees);
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(
+    null
+  );
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newEmployee, setNewEmployee] = useState({
     name: '',
     email: '',
     phone: '',
-    rewardPoints: 0
+    rewardPoints: 0,
   });
 
   // Filter employees based on search query
-  const filteredEmployees = employees.filter(employee =>
+  const filteredEmployees = employees.filter((employee) =>
     employee.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -87,8 +89,8 @@ export default function EmployeeManagement() {
 
   const confirmDeactivate = () => {
     if (selectedEmployee) {
-      setEmployees(prev =>
-        prev.map(employee =>
+      setEmployees((prev) =>
+        prev.map((employee) =>
           employee.id === selectedEmployee.id
             ? { ...employee, isActive: false }
             : employee
@@ -110,7 +112,7 @@ export default function EmployeeManagement() {
       name: '',
       email: '',
       phone: '',
-      rewardPoints: 0
+      rewardPoints: 0,
     });
   };
 
@@ -120,7 +122,7 @@ export default function EmployeeManagement() {
       name: '',
       email: '',
       phone: '',
-      rewardPoints: 0
+      rewardPoints: 0,
     });
   };
 
@@ -132,9 +134,9 @@ export default function EmployeeManagement() {
         email: newEmployee.email,
         phone: newEmployee.phone,
         rewardPoints: newEmployee.rewardPoints,
-        isActive: true
+        isActive: true,
       };
-      setEmployees(prev => [...prev, employee]);
+      setEmployees((prev) => [...prev, employee]);
       closeAddModal();
     }
   };
@@ -144,9 +146,12 @@ export default function EmployeeManagement() {
       {/* Header */}
       <div className="mb-8 flex justify-between items-start">
         <div>
-          <h1 className="text-2xl font-bold text-[#1C398E] mb-4">Employee Management</h1>
+          <h1 className="text-2xl font-bold text-[#1C398E] mb-4">
+            Employee Management
+          </h1>
           <p className="text-black text-sm">
-            Manage all registered employees — view profiles, monitor activity, and maintain accurate employee records.
+            Manage all registered employees — view profiles, monitor activity,
+            and maintain accurate employee records.
           </p>
         </div>
         <button
@@ -254,7 +259,10 @@ export default function EmployeeManagement() {
               ))}
               {filteredEmployees.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                  <td
+                    colSpan={5}
+                    className="px-6 py-8 text-center text-gray-500"
+                  >
                     No employees found matching &quot;{searchQuery}&quot;
                   </td>
                 </tr>
@@ -269,9 +277,12 @@ export default function EmployeeManagement() {
         <div className="fixed inset-0 bg-gray-50 bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-800">Confirm Deactivation</h3>
+              <h3 className="text-lg font-semibold text-gray-800">
+                Confirm Deactivation
+              </h3>
               <p className="text-sm text-gray-600 mt-3">
-                Are you sure you want to deactivate <span className="font-semibold">{selectedEmployee.name}</span>?
+                Are you sure you want to deactivate{' '}
+                <span className="font-semibold">{selectedEmployee.name}</span>?
               </p>
               <p className="text-sm text-gray-500 mt-2">
                 This employee will no longer be able to access their account.
@@ -300,11 +311,13 @@ export default function EmployeeManagement() {
         <div className="fixed inset-0 bg-gray-50 bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-800">Add New Employee</h3>
+              <h3 className="text-lg font-semibold text-gray-800">
+                Add New Employee
+              </h3>
               <p className="text-sm text-gray-600 mt-1 mb-4">
                 Fill in the details to add a new employee
               </p>
-              
+
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -313,12 +326,14 @@ export default function EmployeeManagement() {
                   <input
                     type="text"
                     value={newEmployee.name}
-                    onChange={(e) => setNewEmployee({...newEmployee, name: e.target.value})}
+                    onChange={(e) =>
+                      setNewEmployee({ ...newEmployee, name: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
                     placeholder="Enter employee name"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Email
@@ -326,12 +341,14 @@ export default function EmployeeManagement() {
                   <input
                     type="email"
                     value={newEmployee.email}
-                    onChange={(e) => setNewEmployee({...newEmployee, email: e.target.value})}
+                    onChange={(e) =>
+                      setNewEmployee({ ...newEmployee, email: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
                     placeholder="Enter email address"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Phone
@@ -339,12 +356,14 @@ export default function EmployeeManagement() {
                   <input
                     type="text"
                     value={newEmployee.phone}
-                    onChange={(e) => setNewEmployee({...newEmployee, phone: e.target.value})}
+                    onChange={(e) =>
+                      setNewEmployee({ ...newEmployee, phone: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
                     placeholder="Enter phone number"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Reward Points
@@ -352,14 +371,19 @@ export default function EmployeeManagement() {
                   <input
                     type="number"
                     value={newEmployee.rewardPoints}
-                    onChange={(e) => setNewEmployee({...newEmployee, rewardPoints: parseInt(e.target.value) || 0})}
+                    onChange={(e) =>
+                      setNewEmployee({
+                        ...newEmployee,
+                        rewardPoints: parseInt(e.target.value) || 0,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
                     placeholder="Enter reward points"
                   />
                 </div>
               </div>
             </div>
-            
+
             <div className="p-6 flex justify-end gap-3">
               <button
                 onClick={closeAddModal}
@@ -369,7 +393,9 @@ export default function EmployeeManagement() {
               </button>
               <button
                 onClick={handleAddEmployee}
-                disabled={!newEmployee.name || !newEmployee.email || !newEmployee.phone}
+                disabled={
+                  !newEmployee.name || !newEmployee.email || !newEmployee.phone
+                }
                 className={`px-4 py-2 rounded transition-colors ${
                   newEmployee.name && newEmployee.email && newEmployee.phone
                     ? 'bg-[#1C398E] text-white hover:bg-blue-800'

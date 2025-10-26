@@ -18,7 +18,7 @@ const initialCustomers: Customer[] = [
     email: 'alexdoe@gmail.com',
     phone: '070 345 6090',
     loyaltyPoints: 20,
-    isActive: true
+    isActive: true,
   },
   {
     id: '2',
@@ -26,7 +26,7 @@ const initialCustomers: Customer[] = [
     email: 'sachini@gmail.com',
     phone: '070 234 0567',
     loyaltyPoints: 25,
-    isActive: true
+    isActive: true,
   },
   {
     id: '3',
@@ -34,7 +34,7 @@ const initialCustomers: Customer[] = [
     email: 'kavinuperera@gmail.com',
     phone: '071 223 4754',
     loyaltyPoints: 18,
-    isActive: true
+    isActive: true,
   },
   {
     id: '4',
@@ -42,7 +42,7 @@ const initialCustomers: Customer[] = [
     email: 'naveenabey@gmail.com',
     phone: '076 892 5670',
     loyaltyPoints: 30,
-    isActive: true
+    isActive: true,
   },
   {
     id: '5',
@@ -50,7 +50,7 @@ const initialCustomers: Customer[] = [
     email: 'harithaind@gmail.com',
     phone: '071 983 4734',
     loyaltyPoints: 14,
-    isActive: true
+    isActive: true,
   },
   {
     id: '6',
@@ -58,18 +58,20 @@ const initialCustomers: Customer[] = [
     email: 'sehan@gmail.com',
     phone: '077 987 1567',
     loyaltyPoints: 28,
-    isActive: true
-  }
+    isActive: true,
+  },
 ];
 
 export default function CustomerManagement() {
   const [customers, setCustomers] = useState<Customer[]>(initialCustomers);
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(
+    null
+  );
 
   // Filter customers based on search query
-  const filteredCustomers = customers.filter(customer =>
+  const filteredCustomers = customers.filter((customer) =>
     customer.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -80,8 +82,8 @@ export default function CustomerManagement() {
 
   const confirmDeactivate = () => {
     if (selectedCustomer) {
-      setCustomers(prev =>
-        prev.map(customer =>
+      setCustomers((prev) =>
+        prev.map((customer) =>
           customer.id === selectedCustomer.id
             ? { ...customer, isActive: false }
             : customer
@@ -101,9 +103,12 @@ export default function CustomerManagement() {
     <div className="p-6">
       {/* Header */}
       <div className="mb-10 -mt-5">
-        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">Customer Management</h1>
+        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">
+          Customer Management
+        </h1>
         <p className="text-black text-sm">
-          Manage all registered customers — view profiles, monitor activity, and maintain accurate customer records.
+          Manage all registered customers — view profiles, monitor activity, and
+          maintain accurate customer records.
         </p>
       </div>
 
@@ -191,7 +196,10 @@ export default function CustomerManagement() {
               ))}
               {filteredCustomers.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                  <td
+                    colSpan={5}
+                    className="px-6 py-8 text-center text-gray-500"
+                  >
                     No customers found matching &quot;{searchQuery}&quot;
                   </td>
                 </tr>
@@ -206,9 +214,12 @@ export default function CustomerManagement() {
         <div className="fixed inset-0 bg-gray-50 bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-800">Confirm Deactivation</h3>
+              <h3 className="text-lg font-semibold text-gray-800">
+                Confirm Deactivation
+              </h3>
               <p className="text-sm text-gray-600 mt-3">
-                Are you sure you want to deactivate <span className="font-semibold">{selectedCustomer.name}</span>?
+                Are you sure you want to deactivate{' '}
+                <span className="font-semibold">{selectedCustomer.name}</span>?
               </p>
               <p className="text-sm text-gray-500 mt-2">
                 This customer will no longer be able to access their account.
