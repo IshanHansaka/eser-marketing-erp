@@ -40,7 +40,7 @@ const EmployeeSidebar = () => {
       <div>
         <div className="flex justify-center mb-10">
           <Image
-            src="/images/eser-logo.png"
+            src="/icons/eser-logo.svg"
             alt="Logo"
             width={90}
             height={90}

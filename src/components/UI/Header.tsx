@@ -1,10 +1,15 @@
-import Image from "next/image"
+import Image from 'next/image';
 
 export default function Header() {
   return (
     <nav className="flex items-center justify-between px-8 py-2 border-b">
       <div className="flex items-center">
-        <Image src="/eser-logo.png" width={80} height={80} alt="Eser Logo" />
+        <Image
+          src="/icons/eser-logo.svg"
+          width={80}
+          height={80}
+          alt="Eser Logo"
+        />
       </div>
       <div className="flex items-center space-x-8">
         <a href="#" className="text-blue-700 hover:text-blue-800">
