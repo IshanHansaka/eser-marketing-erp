@@ -17,7 +17,7 @@ const employees = [
   'Priya Jayasinghe',
   'Rajesh Wijeratne',
   'Nimal Perera',
-  'Kasun Bandara'
+  'Kasun Bandara',
 ];
 
 // Mock data for repair requests
@@ -27,47 +27,49 @@ const initialRepairRequests: RepairRequest[] = [
     product: 'Treadmill',
     customer: 'Kavindu Perera',
     description: 'Belt slipping during use',
-    status: 'pending'
+    status: 'pending',
   },
   {
     id: 'ORD-002',
     product: 'Stationary Bike',
     customer: 'Malsha Abeyesekara',
     description: 'Resistance knob not working',
-    status: 'pending'
+    status: 'pending',
   },
   {
     id: 'ORD-003',
     product: 'Rowing Machine',
     customer: 'Nayana Perera',
     description: 'Display screen not turning on',
-    status: 'pending'
+    status: 'pending',
   },
   {
     id: 'ORD-004',
     product: 'Bench Press',
     customer: 'Mary Perera',
     description: 'Seat cushion torn',
-    status: 'pending'
+    status: 'pending',
   },
   {
     id: 'ORD-005',
     product: 'Treadmill',
     customer: 'Nuwan Gamage',
     description: 'Belt slipping during use',
-    status: 'pending'
+    status: 'pending',
   },
   {
     id: 'ORD-006',
     product: 'Treadmill',
     customer: 'Senu Abeyesekara',
     description: 'Belt slipping during use',
-    status: 'pending'
-  }
+    status: 'pending',
+  },
 ];
 
 export default function RepairManagement() {
-  const [repairRequests, setRepairRequests] = useState<RepairRequest[]>(initialRepairRequests);
+  const [repairRequests, setRepairRequests] = useState<RepairRequest[]>(
+    initialRepairRequests
+  );
   const [selectedRequest, setSelectedRequest] = useState<string | null>(null);
   const [selectedEmployee, setSelectedEmployee] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -84,10 +86,14 @@ export default function RepairManagement() {
 
   const confirmAssignment = () => {
     if (selectedRequest && selectedEmployee) {
-      setRepairRequests(prev =>
-        prev.map(request =>
+      setRepairRequests((prev) =>
+        prev.map((request) =>
           request.id === selectedRequest
-            ? { ...request, assignedEmployee: selectedEmployee, status: 'assigned' as const }
+            ? {
+                ...request,
+                assignedEmployee: selectedEmployee,
+                status: 'assigned' as const,
+              }
             : request
         )
       );
@@ -107,15 +113,20 @@ export default function RepairManagement() {
     <div className="p-8">
       {/* Header */}
       <div className="mb-12">
-        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">Repair Management</h1>
+        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">
+          Repair Management
+        </h1>
         <p className="text-black text-sm">
-          Monitor and manage all customer repair and maintenance requests. Assign tasks, track progress, and ensure timely service completion.
+          Monitor and manage all customer repair and maintenance requests.
+          Assign tasks, track progress, and ensure timely service completion.
         </p>
       </div>
 
       {/* Repair Requests Section */}
       <div className="mb-4">
-        <h2 className="text-xl font-semibold text-[#1C398E]">Repair Requests</h2>
+        <h2 className="text-xl font-semibold text-[#1C398E]">
+          Repair Requests
+        </h2>
       </div>
 
       {/* Table */}
@@ -184,7 +195,9 @@ export default function RepairManagement() {
         <div className="fixed inset-0 bg-gray-50 bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
             <div className="p-6 ">
-              <h3 className="text-lg font-semibold text-gray-800">Select Employee</h3>
+              <h3 className="text-lg font-semibold text-gray-800">
+                Select Employee
+              </h3>
               <p className="text-sm text-gray-600 mt-1">
                 Choose an employee to assign to this repair request
               </p>
