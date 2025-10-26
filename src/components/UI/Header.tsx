@@ -1,6 +1,17 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push('/login');
+  };
+
+  const handleRegister = () => {
+    router.push('/register');
+  };
+
   return (
     <nav className="flex items-center justify-between px-8 py-2 border-b">
       <div className="flex items-center">
@@ -26,10 +37,16 @@ export default function Header() {
         </a>
       </div>
       <div className="flex items-center space-x-4">
-        <button className="px-6 py-2 border text-gray-600 hover:text-white border-gray-600 rounded-md hover:bg-gray-800">
+        <button
+          onClick={handleLogin}
+          className="px-6 py-2 border text-gray-600 hover:text-white border-gray-600 rounded-md hover:bg-gray-800"
+        >
           Login
         </button>
-        <button className="px-6 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800">
+        <button
+          onClick={handleRegister}
+          className="px-6 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800"
+        >
           Register
         </button>
       </div>
