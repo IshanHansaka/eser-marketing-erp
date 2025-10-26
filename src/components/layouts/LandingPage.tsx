@@ -29,7 +29,7 @@ export default function LandingPage() {
           <div className="relative">
             <div className="relative z-10">
               <Image
-                src="/landing-image1.png"
+                src="/images/landing-image1.png"
                 alt="Fitness model"
                 width={500}
                 height={400}
@@ -37,7 +37,7 @@ export default function LandingPage() {
             </div>
             <div className="absolute top-10 right-10 w-16 h-16 rounded-lg flex items-center justify-center z-20">
               <Image
-                src="/landing-image2.png"
+                src="/images/landing-image2.png"
                 alt="Fitness model"
                 width={80}
                 height={80}
@@ -45,7 +45,7 @@ export default function LandingPage() {
             </div>
             <div className="absolute top-20 left-0 w-12 h-12 rounded-full">
               <Image
-                src="/landing-image3.png"
+                src="/images/landing-image3.png"
                 alt="Fitness model"
                 width={80}
                 height={80}
@@ -67,7 +67,7 @@ export default function LandingPage() {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="bg-blue-50 p-8 flex items-center justify-center h-64">
                 <Image
-                  src="/equipment1.png"
+                  src="/images/equipment1.png"
                   alt="PowerMax Multi-Position Bench 250"
                   className="w-full h-full object-contain"
                   width={300}
@@ -89,7 +89,7 @@ export default function LandingPage() {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="bg-blue-50 p-8 flex items-center justify-center h-64">
                 <Image
-                  src="/equipment2.png"
+                  src="/images/equipment2.png"
                   alt="SmartFlex 360 Bench"
                   className="w-full h-full object-contain"
                   width={300}
@@ -109,7 +109,7 @@ export default function LandingPage() {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="bg-blue-50 p-8 flex items-center justify-center h-64">
                 <Image
-                  src="/equipment3.png"
+                  src="/images/equipment3.png"
                   alt="ProFlex Adjustable Bench 3000"
                   className="w-full h-full object-contain"
                   width={300}
@@ -134,7 +134,7 @@ export default function LandingPage() {
       <section className="px-8 py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <Image
-            src="/landing-image4.png"
+            src="/images/landing-image4.png"
             alt="Fitness trainers"
             width={600}
             height={600}
