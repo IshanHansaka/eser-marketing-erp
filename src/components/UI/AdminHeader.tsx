@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import NotificationModal from '../layouts/NotificationMadal';
+import NotificationModal from '../layouts/NotificationModal';
 import { useState } from 'react';
 
 export default function AdminHeader() {
