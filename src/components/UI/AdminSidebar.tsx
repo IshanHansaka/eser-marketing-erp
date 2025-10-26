@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import {
   BarChart3,
   Wrench,
@@ -9,10 +8,10 @@ import {
   LucideIcon,
   Users,
   UserSquare,
-  Truck
+  Truck,
 } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 interface MenuItem {
@@ -22,25 +21,18 @@ interface MenuItem {
 }
 
 const EmployeeSidebar = () => {
-  const [selectedItem, setSelectedItem] = useState<string>('Dashboard');
   const pathname = usePathname();
-  const router = useRouter();
 
   const menuItems: MenuItem[] = [
-    { name: 'Dashboard', icon: BarChart3, href: '/Admin/dashboard' },
-    { name: 'Employees', icon: Users, href: '/Admin/employees' },
-    { name: 'Customers', icon: UserSquare, href: '/Admin/customers' },
-    { name: 'Deliveries', icon: Truck, href: '/Admin/deliveries' },
-    { name: 'Repair Requests', icon: Wrench, href: '/Admin/repairRequests' },
-    { name: 'Leave Requests', icon: FileText, href: '/Admin/leaves' },
-    
+    { name: 'Dashboard', icon: BarChart3, href: '/admin/dashboard' },
+    { name: 'Employees', icon: Users, href: '/admin/employees' },
+    { name: 'Customers', icon: UserSquare, href: '/admin/customers' },
+    { name: 'Deliveries', icon: Truck, href: '/admin/deliveries' },
+    { name: 'Repair Requests', icon: Wrench, href: '/admin/repairs' },
+    { name: 'Leave Requests', icon: FileText, href: '/admin/leaves' },
   ];
 
-  // set active item when route changes
-  useEffect(() => {
-    const currentItem = menuItems.find((item) => item.href === pathname);
-    if (currentItem) setSelectedItem(currentItem.name);
-  }, [pathname]);
+  const activeItem = menuItems.find((item) => item.href === pathname)?.name;
 
   return (
     <div className="h-screen w-60 bg-white  py-6 flex flex-col justify-between fixed shadow-lg">
@@ -60,25 +52,21 @@ const EmployeeSidebar = () => {
         <nav>
           <div className="flex flex-col space-y-4">
             {menuItems.map((item) => {
-              const isActive = selectedItem === item.name;
+              const isActive = activeItem === item.name;
 
               return (
-                <Link
-                  key={item.name}
-                  href={item.href || '#'}
-                  onClick={() => setSelectedItem(item.name)}
-                >
+                <Link key={item.name} href={item.href || '#'}>
                   <div
                     className={`flex items-center px-6 py-2 rounded-md cursor-pointer transition 
-                      ${isActive ? 'bg-blue-50 backdrop-blur-sm' : 'hover:bg-blue-50'}
+                      ${
+                        isActive
+                          ? 'bg-blue-50 backdrop-blur-sm'
+                          : 'hover:bg-blue-50'
+                      }
                     `}
                   >
-                    <item.icon
-                      className="h-5 w-5 mr-3 text-black"
-                    />
-                    <span
-                      className={`text-sm font-medium text-black`}
-                    >
+                    <item.icon className="h-5 w-5 mr-3 text-black" />
+                    <span className={`text-sm font-medium text-black`}>
                       {item.name}
                     </span>
                   </div>
@@ -91,9 +79,7 @@ const EmployeeSidebar = () => {
 
       {/* Logout */}
       <div className="px-6 pb-4">
-        <button
-          className="flex items-center space-x-2 text-black hover:text-black text-sm"
-        >
+        <button className="flex items-center space-x-2 text-black hover:text-black text-sm">
           <LogOut className="h-5 w-5" />
           <span>Logout</span>
         </button>
