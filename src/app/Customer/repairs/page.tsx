@@ -1,8 +1,11 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import { Search, Plus, SlidersHorizontal } from 'lucide-react';
+import RepairRequestModal from '@/components/UI/RepairRequestPopup';
 
 export default function Page() {
-  const repairRequests = [
+  // State for repair requests
+  const [repairRequests, setRepairRequests] = useState([
     {
       id: 1,
       product: 'Treadmill',
@@ -45,7 +48,36 @@ export default function Page() {
       issue: 'Belt slipping during use',
       status: 'Completed'
     }
-  ];
+  ]);
+
+  // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Function to handle modal open
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Function to handle modal close
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Function to handle form submission
+  const handleSubmitRequest = (data: { product: string; issue: string }) => {
+    const newRequest = {
+      id: repairRequests.length + 1, // Simple ID generation (incremental)
+      product: data.product,
+      dateSubmitted: new Date().toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      }), // Format: DD Mon YYYY
+      issue: data.issue,
+      status: 'Pending' // Default status for new requests
+    };
+    setRepairRequests([...repairRequests, newRequest]);
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -70,7 +102,10 @@ export default function Page() {
             Monitor the status of your submitted repair requests and stay updated on service timelines and completion.
           </p>
         </div>
-        <button className="bg-[#1E56A0] hover:bg-blue-700 text-white px-5 py-2.5 rounded-md text-sm font-medium transition-colors flex items-center gap-2">
+        <button
+          onClick={handleOpenModal}
+          className="bg-[#1E56A0] hover:bg-blue-700 text-white px-5 py-2.5 rounded-md text-sm font-medium transition-colors flex items-center gap-2"
+        >
           <Plus className="w-4 h-4" />
           New Request
         </button>
@@ -119,6 +154,13 @@ export default function Page() {
           </tbody>
         </table>
       </div>
+
+      {/* Repair Request Modal */}
+      <RepairRequestModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSubmit={handleSubmitRequest}
+      />
     </div>
   );
 }
