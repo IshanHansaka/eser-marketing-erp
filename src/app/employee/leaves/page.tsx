@@ -73,22 +73,7 @@ export default function Leaves() {
     },
   ]);
 
-  const handleLeaveSubmit = (
-    fromDate: string,
-    toDate: string,
-    reason: string
-  ) => {
-    const newLeave = {
-      type: 'Casual',
-      from: fromDate,
-      to: toDate,
-      days:
-        (new Date(toDate).getTime() - new Date(fromDate).getTime()) /
-        (1000 * 3600 * 24),
-      status: 'Pending',
-      reason: reason,
-      approver: 'N/A',
-    };
+  const handleLeaveSubmit = (newLeave: Leave) => {
     setLeaves([newLeave, ...leaves]);
     setShowApplyModal(false);
   };
