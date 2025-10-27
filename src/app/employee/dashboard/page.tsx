@@ -59,10 +59,10 @@ export default function Dashboard() {
           <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
             <Star className="text-white fill-white" size={24} />
           </div>
-          <div className="flex-1 bg-gray-200 rounded-full h-12 overflow-hidden">
+          <div className="flex-1 bg-gray-300 rounded-full h-12 overflow-hidden">
             <div
               className="bg-blue-600 h-full rounded-full flex items-center justify-center text-white font-semibold"
-              style={{ width: '94%' }}
+              style={{ width: '90%' }}
             >
               4.7 / 5.0
             </div>
