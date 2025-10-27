@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import NotificationModal from '../layouts/NotificationMadal';
+import NotificationModal from '../layouts/NotificationModal';
 
 export default function EmployeeHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,14 +24,12 @@ export default function EmployeeHeader() {
     },
     {
       id: 4,
-      title:
-        ' Your leave request for Oct 30–31 was rejected by Ashen Perera.',
+      title: ' Your leave request for Oct 30–31 was rejected by Ashen Perera.',
       date: 'Sep 9 2025',
     },
     {
       id: 5,
-      title:
-        'New equipment parts have arrived in the storage room.',
+      title: 'New equipment parts have arrived in the storage room.',
       date: 'Sep 5 2025',
     },
   ]);

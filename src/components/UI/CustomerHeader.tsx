@@ -2,15 +2,14 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import NotificationModal from '../layouts/NotificationMadal';
+import NotificationModal from '../layouts/NotificationModal';
 
 export default function CustomerHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [notifications, setNotifications] = useState([
     {
       id: 1,
-      title:
-        'Your order #ORD-007 (Stationary Bike) has been shipped.',
+      title: 'Your order #ORD-007 (Stationary Bike) has been shipped.',
       date: 'Sep 25 2025',
     },
     {
@@ -20,7 +19,8 @@ export default function CustomerHeader() {
     },
     {
       id: 3,
-      title: 'Your order #ORD-006 (Dumbbell Set) has been successfully delivered.',
+      title:
+        'Your order #ORD-006 (Dumbbell Set) has been successfully delivered.',
       date: 'Sep 2 2025',
     },
     {
