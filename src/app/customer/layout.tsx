@@ -9,7 +9,7 @@ export default function EmployeeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
+    <div className="flex bg-white">
       <CustomerSidebar />
       <div>
         <CustomerHeader />

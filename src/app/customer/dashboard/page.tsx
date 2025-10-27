@@ -1,10 +1,17 @@
 import React from 'react';
-import { BarChart3, Package, ShoppingCart, Wrench, User, LogOut, TrendingUp, Gift } from 'lucide-react';
-import CustomerSidebar from '../../../components/UI/CustomerSidebar';
+import { Package, ShoppingCart, Wrench, TrendingUp, Gift } from 'lucide-react';
+
+// Types
+interface StatCardProps {
+  icon: React.ComponentType<{ size?: number; className?: string }>;
+  label: string;
+  value: string;
+  color?: 'gray' | 'blue' | 'orange';
+}
 
 // Stat Card Component
-const StatCard = ({ icon: Icon, label, value, color = 'gray' }) => {
-  const colorClasses = {
+const StatCard: React.FC<StatCardProps> = ({ icon: Icon, label, value, color = 'gray' }) => {
+  const colorClasses: Record<string, string> = {
     gray: 'bg-gray-50 text-gray-900',
     blue: 'bg-blue-50 text-blue-600',
     orange: 'bg-orange-50 text-orange-600',
@@ -26,7 +33,7 @@ const StatCard = ({ icon: Icon, label, value, color = 'gray' }) => {
 };
 
 // Main Dashboard Component
-const CustomerDashboard = () => {
+const CustomerDashboard: React.FC = () => {
   const recentOrders = [
     { id: '#ORD-2847', status: 'Delivered', item: 'RDL', date: 'Oct 20, 2025', amount: 'Rs 20,000' },
     { id: '#ORD-2846', status: 'Shipped', item: 'Barbell Curl', date: 'Oct 18, 2025', amount: 'Rs 20,000' },
@@ -44,8 +51,8 @@ const CustomerDashboard = () => {
     { id: '#MNT-141', title: 'Leg Extension Service Request', status: 'Completed: Oct 15', isActive: false },
   ];
 
-  const getStatusColor = (status) => {
-    const colors = {
+  const getStatusColor = (status: string): string => {
+    const colors: Record<string, string> = {
       Delivered: 'bg-green-100 text-green-700',
       Shipped: 'bg-blue-100 text-blue-700',
       Processing: 'bg-yellow-100 text-yellow-700',
@@ -54,44 +61,21 @@ const CustomerDashboard = () => {
   };
 
   return (
-    <div className="flex bg-gray-50 min-h-screen">
-      <CustomerSidebar />
-      
-      <div className="flex-1 overflow-auto">
-        {/* Header */}
-        <header className="bg-white border-b border-gray-200 px-8 py-4">
-          <div className="flex justify-end items-center gap-4">
-            <button className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
-              <span className="text-xl">🔔</span>
-            </button>
-            <button className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
-              <ShoppingCart size={20} />
-            </button>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
-                <span className="text-white text-sm font-medium">SP</span>
-              </div>
-              <div>
-                <p className="font-semibold text-sm">Sheron Perera</p>
-                <p className="text-xs text-gray-500">Customer</p>
-              </div>
-            </div>
-          </div>
-        </header>
+    <div className="bg-gray-50 min-h-screen">
+      {/* Page Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900">
+          Customer <span className="text-blue-600">Dashboard</span>
+        </h1>
+        <p className="text-gray-600 mt-1">Welcome back</p>
+      </div>
 
-        {/* Main Content */}
-        <main className="p-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Customer <span className="text-blue-600">Dashboard</span></h1>
-            <p className="text-gray-600 mt-1">Welcome back</p>
-          </div>
-
-          {/* Stat Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <StatCard icon={ShoppingCart} label="Total Orders" value="48" color="gray" />
-            <StatCard icon={Package} label="Active Deliveries" value="20" color="blue" />
-            <StatCard icon={Wrench} label="Maintenance Requests" value="05" color="orange" />
-          </div>
+      {/* Stat Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <StatCard icon={ShoppingCart} label="Total Orders" value="48" color="gray" />
+        <StatCard icon={Package} label="Active Deliveries" value="20" color="blue" />
+        <StatCard icon={Wrench} label="Maintenance Requests" value="05" color="orange" />
+      </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Recent Orders */}
@@ -125,7 +109,7 @@ const CustomerDashboard = () => {
             </div>
 
             {/* Loyalty Points */}
-            <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg p-6 text-white">
+            <div className="bg-linear-to-br from-blue-600 to-blue-700 rounded-lg p-6 text-white">
               <div className="flex items-center gap-2 mb-6">
                 <Gift size={20} />
                 <h2 className="text-lg font-semibold">Loyalty Points</h2>
@@ -244,10 +228,8 @@ const CustomerDashboard = () => {
               </div>
             </div>
           </div>
-        </main>
-      </div>
-    </div>
-  );
-};
+        </div>
+      );
+    };
 
-export default CustomerDashboard;
+    export default CustomerDashboard;
