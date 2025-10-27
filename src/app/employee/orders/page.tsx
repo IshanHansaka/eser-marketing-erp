@@ -85,7 +85,6 @@ export default function Orders() {
       order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.product.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      order.product.toLowerCase().includes(searchQuery.toLowerCase()) ||
       order.customer.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesFilter =
