@@ -8,7 +8,7 @@ export default function EmployeeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
+    <div className="flex bg-gray-50">
       <EmployeeSidebar />
       <div>
         <EmployeeHeader />
