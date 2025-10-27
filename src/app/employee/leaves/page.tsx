@@ -105,7 +105,7 @@ export default function Leaves() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-blue-50 rounded-lg p-6">
+        <div className="bg-blue-100 rounded-lg p-6 flex justify-center gap-10 items-center">
           <p className="text-6xl font-bold text-blue-900 mb-2">10</p>
           <p className="text-gray-700 font-medium">
             Available
@@ -113,7 +113,7 @@ export default function Leaves() {
             Leaves
           </p>
         </div>
-        <div className="bg-blue-50 rounded-lg p-6 flex">
+        <div className="bg-blue-100 rounded-lg p-6 flex justify-center gap-10 items-center">
           <p className="text-6xl font-bold text-blue-900 mb-2">02</p>
           <p className="text-gray-700 font-medium">
             Pending
@@ -121,7 +121,7 @@ export default function Leaves() {
             Leave Requests
           </p>
         </div>
-        <div className="bg-blue-50 rounded-lg p-6">
+        <div className="bg-blue-100 rounded-lg p-6 flex justify-center gap-10 items-center">
           <p className="text-6xl font-bold text-blue-900 mb-2">07</p>
           <p className="text-gray-700 font-medium">
             Rejected
