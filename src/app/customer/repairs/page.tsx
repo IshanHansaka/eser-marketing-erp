@@ -93,11 +93,11 @@ export default function Page() {
   };
 
   return (
-    <div className="max-w-7xl">
+    <div className="p-8">
       {/* Header Section */}
       <div className="flex items-start justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-blue-900 mb-2">My Repair Requests</h1>
+          <h1 className="text-3xl font-bold text-blue-900 mb-2">My Repair Requests</h1>
           <p className="text-black text-sm font-medium">
             Monitor the status of your submitted repair requests and stay updated on service timelines and completion.
           </p>

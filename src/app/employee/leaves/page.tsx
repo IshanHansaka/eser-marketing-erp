@@ -113,7 +113,7 @@ export default function Leaves() {
             Leaves
           </p>
         </div>
-        <div className="bg-blue-50 rounded-lg p-6">
+        <div className="bg-blue-50 rounded-lg p-6 flex">
           <p className="text-6xl font-bold text-blue-900 mb-2">02</p>
           <p className="text-gray-700 font-medium">
             Pending
