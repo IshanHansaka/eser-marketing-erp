@@ -1,7 +1,20 @@
+'use client';
+
 import { Truck, Package, Wrench, Star, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
+  const router = useRouter();
+
+  const handleViewOrdersClick = () => {
+    router.push('/employee/orders/');
+  };
+
+  const handleViewRepairsClick = () => {
+    router.push('/employee/tasks/');
+  };
+
   return (
     <div className="p-8">
       <div className="mb-8">
@@ -80,7 +93,10 @@ export default function Dashboard() {
             <p className="text-gray-600 mb-6">
               You have 3 new orders assigned today.
             </p>
-            <button className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+            <button
+              onClick={handleViewOrdersClick}
+              className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+            >
               View Orders
               <ArrowRight size={18} />
             </button>
@@ -104,7 +120,10 @@ export default function Dashboard() {
             <p className="text-gray-600 mb-6">
               2 repairs are currently pending your attention.
             </p>
-            <button className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+            <button
+              onClick={handleViewRepairsClick}
+              className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+            >
               View Repairs
               <ArrowRight size={18} />
             </button>
