@@ -11,7 +11,7 @@ interface Task {
   status: 'pending' | 'completed';
 }
 
-const tasks: Task[] = [
+const initialTasks: Task[] = [
   {
     id: 'RE-001',
     product: 'Treadmill',
@@ -63,9 +63,25 @@ const tasks: Task[] = [
 ];
 
 export default function MaintenanceTasks() {
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const handleToggleStatus = (taskId: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId
+          ? {
+              ...task,
+              status: task.status === 'pending' ? 'completed' : 'pending',
+              action:
+                task.status === 'pending' ? 'Completed' : 'Mark as Completed',
+            }
+          : task
+      )
+    );
+  };
 
   const filteredTasks = tasks.filter((task) => {
     const matchesSearch =
@@ -229,10 +245,11 @@ export default function MaintenanceTasks() {
                   </td>
                   <td className="px-6 py-4">
                     <button
-                      className={`inline-block px-4 py-1.5 rounded text-sm font-medium ${
+                      onClick={() => handleToggleStatus(task.id)}
+                      className={`inline-block px-4 py-1.5 rounded text-sm font-medium transition-colors ${
                         task.status === 'completed'
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-blue-100 text-blue-800'
+                          ? 'bg-green-100 text-green-800 hover:bg-green-200'
+                          : 'bg-blue-600 text-white hover:bg-blue-700'
                       }`}
                     >
                       {task.action}
@@ -243,7 +260,7 @@ export default function MaintenanceTasks() {
               {filteredTasks.length === 0 && (
                 <tr>
                   <td
-                    colSpan={6}
+                    colSpan={5}
                     className="px-6 py-8 text-center text-gray-500"
                   >
                     No tasks found
