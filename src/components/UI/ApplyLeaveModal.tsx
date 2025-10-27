@@ -4,11 +4,13 @@ import { X, Calendar } from 'lucide-react';
 interface ApplyLeaveModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSubmit: (fromDate: string, toDate: string, reason: string) => void;
 }
 
 export default function ApplyLeaveModal({
   isOpen,
   onClose,
+  onSubmit,
 }: ApplyLeaveModalProps) {
   const [formData, setFormData] = useState({
     fromDate: '',
@@ -19,6 +21,7 @@ export default function ApplyLeaveModal({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Leave request submitted:', formData);
+    onSubmit(formData.fromDate, formData.toDate, formData.reason);
     onClose();
   };
 

@@ -4,10 +4,19 @@ import ApplyLeaveModal from '@/components/UI/ApplyLeaveModal';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
 
+interface Leave {
+  type: string;
+  from: string;
+  to: string;
+  days: number;
+  status: string;
+  reason: string;
+  approver: string;
+}
+
 export default function Leaves() {
   const [showApplyModal, setShowApplyModal] = useState(false);
-
-  const leaves = [
+  const [leaves, setLeaves] = useState<Leave[]>([
     {
       type: 'Casual',
       from: '31 Dec 2024',
@@ -62,7 +71,27 @@ export default function Leaves() {
       reason: 'Travelling abroad',
       approver: 'David Marly',
     },
-  ];
+  ]);
+
+  const handleLeaveSubmit = (
+    fromDate: string,
+    toDate: string,
+    reason: string
+  ) => {
+    const newLeave = {
+      type: 'Casual',
+      from: fromDate,
+      to: toDate,
+      days:
+        (new Date(toDate).getTime() - new Date(fromDate).getTime()) /
+        (1000 * 3600 * 24),
+      status: 'Pending',
+      reason: reason,
+      approver: 'N/A',
+    };
+    setLeaves([newLeave, ...leaves]);
+    setShowApplyModal(false);
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -133,6 +162,7 @@ export default function Leaves() {
         <ApplyLeaveModal
           isOpen={showApplyModal}
           onClose={() => setShowApplyModal(false)}
+          onSubmit={handleLeaveSubmit}
         />
 
         <div className="overflow-x-auto">
