@@ -1,5 +1,5 @@
 import React from 'react';
-import { Package, ShoppingCart, Wrench, TrendingUp, Award, Gift, MapPin, Clock, Lightbulb, Truck } from 'lucide-react';
+import { Package, ShoppingCart, Wrench, TrendingUp, Award, Gift, MapPin, Clock, Lightbulb, Truck, Info, CircleCheck } from 'lucide-react';
 import StatCard from '@/components/UI/StatCard';
 
 const CustomerDashboard: React.FC = () => {
@@ -125,17 +125,19 @@ const CustomerDashboard: React.FC = () => {
           {/* Delivery Status & Maintenance */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
             {/* Delivery Status */}
-            <div className="lg:col-span-2 bg-white rounded-lg border border-gray-200 p-6">
+            <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-200 p-6">
               <div className="flex items-center gap-2 mb-6">
-                <Package size={20} className="text-[#1447E6]" />
+                <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                  <Truck size={24} className="text-[#1447E6]" />
+                </div>
                 <h2 className="text-lg font-semibold">Delivery Status</h2>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-3">
                 {deliveries.map((delivery, index) => (
-                  <div key={index}>
+                  <div key={index} className="bg-[#EFF6FF] border border-[#DBEAFE] rounded-2xl p-6">
                     <div className="flex justify-between items-center mb-3">
-                      <span className="text-[#1447E6] font-semibold">{delivery.id}</span>
+                      <span className="text-[#1447E6] font-medium">{delivery.id}</span>
                       <span className="text-gray-600 text-sm">{delivery.time}</span>
                     </div>
                     <p className="text-gray-900 font-medium mb-3">{delivery.status}</p>
@@ -146,16 +148,14 @@ const CustomerDashboard: React.FC = () => {
                       ></div>
                     </div>
                     <p className="text-gray-500 text-sm flex items-center gap-1">
-                      <MapPin size={16}/>{delivery.location}
+                      <MapPin size={16}/> {delivery.location}
                     </p>
                   </div>
                 ))}
                 
-                <div className="bg-blue-50 rounded-lg p-4 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#1447E6] flex items-center justify-center text-white text-sm">
-                    ✓
-                  </div>
-                  <span className="text-blue-700 font-medium">2 deliveries completed this month</span>
+                <div className="bg-[#EFF6FF] border border-[#DBEAFE] rounded-2xl p-6 flex items-center gap-3 mt-3">
+                  <CircleCheck size={24} className="text-[#1447E6]" />
+                  <span className="text-[#1447E6] font-medium">2 deliveries completed this month</span>
                 </div>
               </div>
             </div>
@@ -179,7 +179,7 @@ const CustomerDashboard: React.FC = () => {
                     <div className="flex justify-between items-start mb-2">
                       <span className="text-[#1447E6] font-semibold">{request.id}</span>
                       {request.isActive && (
-                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                        <Info size={16} className="text-blue-500"/>
                       )}
                     </div>
                     <p className="text-gray-900 font-medium mb-2">{request.title}</p>
@@ -191,8 +191,8 @@ const CustomerDashboard: React.FC = () => {
               </div>
 
               <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-4">
-                <p className="text-cyan-800 text-sm">
-                  <Lightbulb/> Regular maintenance ensures optimal equipment performance.
+                <p className="text-cyan-800 text-sm flex items-center gap-2">
+                  <Lightbulb size={24}/> Regular maintenance ensures optimal equipment performance.
                 </p>
               </div>
             </div>

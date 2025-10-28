@@ -17,7 +17,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon: Icon, label, value, color = '
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-6">
       <div className="flex items-center gap-4">
-        <div className={`w-12 h-12 rounded-lg ${colorClasses[color]} flex items-center justify-center`}>
+        <div className={`w-12 h-12 rounded-lg ${colorClasses["gray"]} flex items-center justify-center`}>
           <Icon size={24} />
         </div>
         <div>
