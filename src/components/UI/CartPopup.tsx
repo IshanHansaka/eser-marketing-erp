@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Import useRouter
 import { ShoppingCart, Trash2, Receipt, X } from 'lucide-react';
 
-export default function Page() {
+export default function CartPopup() {
   const router = useRouter(); // Initialize router
   const [cartItems, setCartItems] = useState([
     {
