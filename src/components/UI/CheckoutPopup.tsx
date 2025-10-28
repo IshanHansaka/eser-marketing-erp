@@ -52,8 +52,8 @@ export default function CheckoutPopup() {
   const deliveryCost = selectedDelivery === 'standard' ? 300 : 350;
 
   return (
-    <div className="fixed inset-0 bg-[#DCDCDC] bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-lg flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="sticky top-0 bg-white px-6 py-4 flex justify-between items-center z-10 border-b">
           <div className="w-6"></div>

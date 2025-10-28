@@ -59,8 +59,8 @@ export default function CartPopup() {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
-      <div className="bg-white rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto relative">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-lg flex items-center justify-center p-4 z-50 overflow-y-auto">
+      <div className="bg-white rounded-xl shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto relative">
         {/* Close Button */}
         <div className="absolute top-4 right-4 z-10">
           <button
