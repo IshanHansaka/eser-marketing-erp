@@ -95,24 +95,24 @@ const CustomerDashboard: React.FC = () => {
                   <span className="text-sm font-medium">550 points away</span>
                 </div>
                 <div className="w-full bg-blue-800/50 rounded-full h-2">
-                  <div className="bg-white rounded-full h-2" style={{ width: '80%' }}></div>
+                  <div className="bg-[#2ee1f1] rounded-full h-2" style={{ width: '80%' }}></div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-12">
-                <div>
-                  <div className="flex items-center gap-2 text-blue-100 text-sm mb-1">
-                    <TrendingUp size={16} />
-                    <span>This month</span>
+                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4">
+                  <div className="flex justify-start mb-3">
+                    <TrendingUp size={20} className="text-[#CEFAFE]" />
                   </div>
-                  <p className="text-2xl font-bold">+350</p>
+                  <p className="text-3xl font-medium mb-2">+350</p>
+                  <span className=" text-white text-xs px-2 py-1 rounded-full">This month</span>
                 </div>
-                <div>
-                  <div className="flex items-center gap-2 text-blue-100 text-sm mb-1">
-                    <Gift size={16} />
-                    <span>Rewards earned</span>
+                <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4">
+                  <div className="flex justify-start mb-3">
+                    <Gift size={20} className="text-[#CEFAFE]" />
                   </div>
-                  <p className="text-2xl font-bold">5</p>
+                  <p className="text-3xl font-medium mb-2">5</p>
+                  <span className= "text-white text-xs px-2 py-1 rounded-full">Rewards earned</span>
                 </div>
               </div>
 
@@ -143,7 +143,7 @@ const CustomerDashboard: React.FC = () => {
                     <p className="text-gray-900 font-medium mb-3">{delivery.status}</p>
                     <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
                       <div 
-                        className="bg-[#1447E6] rounded-full h-2" 
+                        className="bg-[#0b2985] rounded-full h-2" 
                         style={{ width: `${delivery.progress}%` }}
                       ></div>
                     </div>
@@ -177,7 +177,7 @@ const CustomerDashboard: React.FC = () => {
                 {maintenanceRequests.map((request, index) => (
                   <div key={index} className="border border-gray-200 rounded-lg p-4">
                     <div className="flex justify-between items-start mb-2">
-                      <span className="text-[#1447E6] font-semibold">{request.id}</span>
+                      <span className="text-[#1447E6] font-medium">{request.id}</span>
                       {request.isActive && (
                         <Info size={16} className="text-blue-500"/>
                       )}

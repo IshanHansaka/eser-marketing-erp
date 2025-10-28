@@ -7,7 +7,7 @@ interface StatCardProps {
   color?: 'gray' | 'blue' | 'orange';
 }
 
-const StatCard: React.FC<StatCardProps> = ({ icon: Icon, label, value, color = 'gray' }) => {
+const StatCard: React.FC<StatCardProps> = ({ icon: Icon, label, value }) => {
   const colorClasses: Record<string, string> = {
     gray: 'bg-gray-50 text-gray-900',
     blue: 'bg-blue-50 text-blue-600',
