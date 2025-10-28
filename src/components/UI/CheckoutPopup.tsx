@@ -4,11 +4,9 @@ import { useState } from 'react';
 import { X } from 'lucide-react';
 import Image from 'next/image';
 import { useModal } from '../../components/contexts/ModalContext';
-import { useCart } from '../../components/contexts/CartContext';
 
 export default function CheckoutPopup() {
-  const { closeCheckout } = useModal();
-  const { cartItems, subtotal, discount, total } = useCart(); // Get cart data
+  const { cartItems, subtotal, discount, total, closeCheckout } = useModal();
 
   const [paymentMethod, setPaymentMethod] = useState('credit-card');
   const [rememberPayment, setRememberPayment] = useState(false);

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ShoppingCart, Trash2, Receipt, X } from 'lucide-react';
 import { useModal } from '../../components/contexts/ModalContext';
+import Image from 'next/image';
 
 export default function CartPopup() {
   const { closeCart, openCheckout } = useModal();
@@ -13,27 +14,27 @@ export default function CartPopup() {
       name: 'Treadmill',
       image: '/images/equipment1.png',
       unitPrice: 150000,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 2,
       name: 'Dumbbell Set (20kg)',
       image: '/images/equipment2.png',
       unitPrice: 18000,
-      quantity: 2
+      quantity: 2,
     },
     {
       id: 3,
       name: 'Exercise Bike 3000',
       image: '/images/equipment3.png',
       unitPrice: 85000,
-      quantity: 1
-    }
+      quantity: 1,
+    },
   ]);
 
   const handleQuantityChange = (id: number, change: number) => {
-    setCartItems(items =>
-      items.map(item =>
+    setCartItems((items) =>
+      items.map((item) =>
         item.id === id
           ? { ...item, quantity: Math.max(1, item.quantity + change) }
           : item
@@ -42,14 +43,18 @@ export default function CartPopup() {
   };
 
   const handleRemoveItem = (id: number) => {
-    setCartItems(items => items.filter(item => item.id !== id));
+    setCartItems((items) => items.filter((item) => item.id !== id));
   };
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.unitPrice * item.quantity,
+    0
+  );
   const discount = 10000;
   const total = subtotal - discount;
 
   const handleProceedToCheckout = () => {
+    closeCart();
     openCheckout(); // Opens CheckoutPopup on top
   };
 
@@ -78,26 +83,46 @@ export default function CartPopup() {
           <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
-                <th className="text-left py-4 px-6 text-sm font-bold text-black">Product Image</th>
-                <th className="text-left py-4 px-6 text-sm font-bold text-black">Product</th>
-                <th className="text-left py-4 px-6 text-sm font-bold text-black">Unit Price</th>
-                <th className="text-left py-4 px-6 text-sm font-bold text-black">Quantity</th>
-                <th className="text-left py-4 px-6 text-sm font-bold text-black">Subtotal</th>
-                <th className="text-left py-4 px-6 text-sm font-bold text-black">Remove</th>
+                <th className="text-left py-4 px-6 text-sm font-bold text-black">
+                  Product Image
+                </th>
+                <th className="text-left py-4 px-6 text-sm font-bold text-black">
+                  Product
+                </th>
+                <th className="text-left py-4 px-6 text-sm font-bold text-black">
+                  Unit Price
+                </th>
+                <th className="text-left py-4 px-6 text-sm font-bold text-black">
+                  Quantity
+                </th>
+                <th className="text-left py-4 px-6 text-sm font-bold text-black">
+                  Subtotal
+                </th>
+                <th className="text-left py-4 px-6 text-sm font-bold text-black">
+                  Remove
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {cartItems.map((item) => (
-                <tr key={item.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="py-5 px-6 pl-10">
-                    <img
+                <tr
+                  key={item.id}
+                  className="hover:bg-gray-50 transition-colors"
+                >
+                  <td className="py-5 px-6 pl-10 rounded-lg">
+                    <Image
                       src={item.image}
                       alt={item.name}
-                      className="w-20 h-20 rounded-lg object-cover"
+                      width={80}
+                      height={80}
                     />
                   </td>
-                  <td className="py-5 px-6 text-sm text-gray-900 font-medium">{item.name}</td>
-                  <td className="py-5 px-6 text-sm text-gray-900">Rs. {item.unitPrice.toLocaleString()}</td>
+                  <td className="py-5 px-6 text-sm text-gray-900 font-medium">
+                    {item.name}
+                  </td>
+                  <td className="py-5 px-6 text-sm text-gray-900">
+                    Rs. {item.unitPrice.toLocaleString()}
+                  </td>
                   <td className="py-5 px-6">
                     <div className="flex items-center border border-gray-300 rounded-md w-fit">
                       <button
@@ -146,16 +171,28 @@ export default function CartPopup() {
             </div>
             <div className="space-y-4 mb-6">
               <div className="flex justify-between items-center">
-                <span className="text-sm font-semibold text-gray-700">Subtotal:</span>
-                <span className="text-base font-bold text-blue-900">Rs. {subtotal.toLocaleString()}</span>
+                <span className="text-sm font-semibold text-gray-700">
+                  Subtotal:
+                </span>
+                <span className="text-base font-bold text-blue-900">
+                  Rs. {subtotal.toLocaleString()}
+                </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm font-semibold text-gray-700">Discounts:</span>
-                <span className="text-base font-bold text-blue-900">Rs. {discount.toLocaleString()}</span>
+                <span className="text-sm font-semibold text-gray-700">
+                  Discounts:
+                </span>
+                <span className="text-base font-bold text-blue-900">
+                  Rs. {discount.toLocaleString()}
+                </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-base font-bold text-gray-900">Total:</span>
-                <span className="text-lg font-bold text-blue-900">Rs. {total.toLocaleString()}</span>
+                <span className="text-base font-bold text-gray-900">
+                  Total:
+                </span>
+                <span className="text-lg font-bold text-blue-900">
+                  Rs. {total.toLocaleString()}
+                </span>
               </div>
             </div>
             <div className="flex justify-end">
