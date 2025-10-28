@@ -129,10 +129,10 @@ export default function DeliveryOverview() {
   };
 
   return (
-    <div className="p-8 -mt-10">
+    <div className="p-8">
       {/* Header */}
-      <div className="mb-10">
-        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-[#1C398E] mb-4">
           Delivery Overview
         </h1>
         <p className="text-black text-sm">

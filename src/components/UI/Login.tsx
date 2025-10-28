@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Eye, EyeOff } from 'lucide-react';
+import { X, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -9,29 +9,33 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     console.log('Login:', { email, password });
+
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     switch (email) {
       case 'employee@gmail.com':
         router.push('/employee/dashboard');
         break;
-
       case 'customer@gmail.com':
         router.push('/customer/dashboard');
         break;
-
       case 'admin@gmail.com':
         router.push('/admin/dashboard');
         break;
-
       default:
+        alert('Invalid credentials');
         break;
     }
+
+    setLoading(false);
   };
 
   const handleClose = () => {
@@ -114,17 +118,27 @@ export function Login() {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors"
+            disabled={loading}
+            className={`w-full flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors ${
+              loading ? 'opacity-75 cursor-not-allowed' : ''
+            }`}
           >
-            Login Now
+            {loading ? (
+              <>
+                <Loader2 className="animate-spin" size={20} />
+                Logging in...
+              </>
+            ) : (
+              'Login Now'
+            )}
           </button>
         </form>
 
         {/* Sign Up Link */}
         <p className="text-center text-gray-600 mt-6">
-          Don&apos;t Have An Account ?{' '}
+          Don&apos;t Have An Account?{' '}
           <Link
-            href={'/register'}
+            href="/register"
             className="text-blue-600 hover:text-blue-700 font-semibold"
           >
             Sign Up

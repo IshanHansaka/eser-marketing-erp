@@ -142,11 +142,11 @@ export default function EmployeeManagement() {
   };
 
   return (
-    <div className="p-8 -mt-6">
+    <div className="p-8">
       {/* Header */}
-      <div className="mb-8 flex justify-between items-start">
+      <div className="mb-6 flex justify-between items-start">
         <div>
-          <h1 className="text-2xl font-bold text-[#1C398E] mb-4">
+          <h1 className="text-3xl font-bold text-[#1C398E] mb-4">
             Employee Management
           </h1>
           <p className="text-black text-sm">

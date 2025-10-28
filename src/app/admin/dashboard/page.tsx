@@ -84,10 +84,10 @@ export default function AdminDashboard() {
   const [selectedPeriod] = useState('October (1st Wednesday - today)');
 
   return (
-    <div className="p-8 -mt-11">
+    <div className="p-8">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[#1C398E] mb-1">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-[#1C398E] mb-1">
           Admin Dashboard
         </h1>
         <p className="text-gray-600 text-sm">Welcome back</p>

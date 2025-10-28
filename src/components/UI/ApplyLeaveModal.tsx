@@ -1,25 +1,75 @@
+'use client';
+
 import React, { useState } from 'react';
 import { X, Calendar } from 'lucide-react';
+
+interface Leave {
+  type: string;
+  from: string;
+  to: string;
+  days: number;
+  status: string;
+  reason: string;
+  approver: string;
+}
 
 interface ApplyLeaveModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSubmit: (leave: Leave) => void;
 }
 
 export default function ApplyLeaveModal({
   isOpen,
   onClose,
+  onSubmit,
 }: ApplyLeaveModalProps) {
   const [formData, setFormData] = useState({
+    leaveType: 'Casual',
     fromDate: '',
     toDate: '',
     reason: '',
   });
 
+  const calculateDays = (from: string, to: string): number => {
+    if (!from || !to) return 0;
+    const fromDate = new Date(from);
+    const toDate = new Date(to);
+    const diffTime = Math.abs(toDate.getTime() - fromDate.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays + 1;
+  };
+
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Leave request submitted:', formData);
-    onClose();
+
+    const newLeave: Leave = {
+      type: formData.leaveType,
+      from: formatDate(formData.fromDate),
+      to: formatDate(formData.toDate),
+      days: calculateDays(formData.fromDate, formData.toDate),
+      status: 'Pending',
+      reason: formData.reason,
+      approver: 'N/A',
+    };
+
+    onSubmit(newLeave);
+
+    // Reset form
+    setFormData({
+      leaveType: 'Casual',
+      fromDate: '',
+      toDate: '',
+      reason: '',
+    });
   };
 
   const handleInputChange = (
@@ -74,6 +124,25 @@ export default function ApplyLeaveModal({
 
           {/* Modal Content */}
           <form onSubmit={handleSubmit} className="px-8 pb-8">
+            {/* Leave Type */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-blue-600 mb-2">
+                Leave Type
+              </label>
+              <select
+                name="leaveType"
+                value={formData.leaveType}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700"
+                required
+              >
+                <option value="Casual">Casual</option>
+                <option value="Health">Health</option>
+                <option value="Annual">Annual</option>
+                <option value="Emergency">Emergency</option>
+              </select>
+            </div>
+
             {/* Date Inputs Row */}
             <div className="grid grid-cols-2 gap-4 mb-6">
               {/* From Date */}
@@ -91,7 +160,7 @@ export default function ApplyLeaveModal({
                     name="fromDate"
                     value={formData.fromDate}
                     onChange={handleInputChange}
-                    className="w-full pl-10 </button>pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-600"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-600"
                     placeholder="Select date"
                     required
                   />
@@ -113,6 +182,7 @@ export default function ApplyLeaveModal({
                     name="toDate"
                     value={formData.toDate}
                     onChange={handleInputChange}
+                    min={formData.fromDate}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-600"
                     placeholder="Select date"
                     required
