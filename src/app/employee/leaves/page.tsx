@@ -4,10 +4,19 @@ import ApplyLeaveModal from '@/components/UI/ApplyLeaveModal';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
 
+interface Leave {
+  type: string;
+  from: string;
+  to: string;
+  days: number;
+  status: string;
+  reason: string;
+  approver: string;
+}
+
 export default function Leaves() {
   const [showApplyModal, setShowApplyModal] = useState(false);
-
-  const leaves = [
+  const [leaves, setLeaves] = useState<Leave[]>([
     {
       type: 'Casual',
       from: '31 Dec 2024',
@@ -62,7 +71,12 @@ export default function Leaves() {
       reason: 'Travelling abroad',
       approver: 'David Marly',
     },
-  ];
+  ]);
+
+  const handleLeaveSubmit = (newLeave: Leave) => {
+    setLeaves([newLeave, ...leaves]);
+    setShowApplyModal(false);
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -91,7 +105,7 @@ export default function Leaves() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-blue-50 rounded-lg p-6">
+        <div className="bg-blue-100 rounded-lg p-6 flex justify-center gap-10 items-center">
           <p className="text-6xl font-bold text-blue-900 mb-2">10</p>
           <p className="text-gray-700 font-medium">
             Available
@@ -99,7 +113,7 @@ export default function Leaves() {
             Leaves
           </p>
         </div>
-        <div className="bg-blue-50 rounded-lg p-6">
+        <div className="bg-blue-100 rounded-lg p-6 flex justify-center gap-10 items-center">
           <p className="text-6xl font-bold text-blue-900 mb-2">02</p>
           <p className="text-gray-700 font-medium">
             Pending
@@ -107,7 +121,7 @@ export default function Leaves() {
             Leave Requests
           </p>
         </div>
-        <div className="bg-blue-50 rounded-lg p-6">
+        <div className="bg-blue-100 rounded-lg p-6 flex justify-center gap-10 items-center">
           <p className="text-6xl font-bold text-blue-900 mb-2">07</p>
           <p className="text-gray-700 font-medium">
             Rejected
@@ -133,6 +147,7 @@ export default function Leaves() {
         <ApplyLeaveModal
           isOpen={showApplyModal}
           onClose={() => setShowApplyModal(false)}
+          onSubmit={handleLeaveSubmit}
         />
 
         <div className="overflow-x-auto">

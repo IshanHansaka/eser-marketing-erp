@@ -115,10 +115,10 @@ export default function LeaveRequests() {
   };
 
   return (
-    <div className="p-8 -mt-8">
+    <div className="p-8">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[#1C398E] mb-4">Leave Requests</h1>
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-[#1C398E] mb-4">Leave Requests</h1>
         <p className="text-black text-sm">
           Review, approve, or reject employee leave requests efficiently and keep track of leave history.
         </p>

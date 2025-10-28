@@ -94,7 +94,7 @@ export default function Page() {
   const tabs = ['All', 'Delivered', 'Shipped', 'Pending'];
 
   return (
-    <div className="max-w-7xl">
+    <div className="p-8">
       {/* Header Section */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-blue-900 mb-2">My Orders</h1>

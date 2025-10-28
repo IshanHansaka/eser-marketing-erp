@@ -3,10 +3,10 @@ import { User } from 'lucide-react';
 
 export default function Page() {
   return (
-    <div className="max-w-6xl">
+    <div className="p-8">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-blue-900 mb-2">My Profile</h1>
+        <h1 className="text-3xl font-bold text-blue-900 mb-2">My Profile</h1>
         <p className="text-black text-medium">
           Manage your personal information and keep your profile up to date.
         </p>
