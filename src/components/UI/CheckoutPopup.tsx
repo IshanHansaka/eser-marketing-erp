@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useModal } from '../../components/contexts/ModalContext';
 
 export default function CheckoutPopup() {
-  const { cartItems, subtotal, discount, total, closeCheckout } = useModal();
+  const { cartItems, subtotal, discount, total, closeCheckout, openCart } = useModal();
 
   const [paymentMethod, setPaymentMethod] = useState('credit-card');
   const [rememberPayment, setRememberPayment] = useState(false);
@@ -20,14 +20,21 @@ export default function CheckoutPopup() {
     country: '',
     cardNumber: '',
     expiryDate: '',
-    cvv: ''
+    cvv: '',
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
+  };
+
+  const handleClose = () => {
+    closeCheckout();
+    openCart(); // Re-open CartPopup on close
   };
 
   const handleSubmit = () => {
@@ -36,7 +43,7 @@ export default function CheckoutPopup() {
       paymentMethod,
       selectedDelivery,
       cartItems,
-      total
+      total,
     });
     alert('Order placed successfully!');
     closeCheckout(); // Close modal after submit
@@ -54,7 +61,7 @@ export default function CheckoutPopup() {
             Order Now!
           </h2>
           <button
-            onClick={closeCheckout}
+            onClick={handleClose}
             className="text-gray-500 hover:text-gray-700 transition-colors p-1 rounded-full hover:bg-gray-100"
             aria-label="Close checkout"
           >
@@ -65,11 +72,15 @@ export default function CheckoutPopup() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
           {/* Left Column - Delivery Address & Payment */}
           <div className="border-r border-gray-300 pr-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-4">Delivery Address</h3>
+            <h3 className="text-lg font-semibold text-blue-900 mb-4">
+              Delivery Address
+            </h3>
 
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                  Full Name
+                </label>
                 <input
                   type="text"
                   name="fullName"
@@ -80,7 +91,9 @@ export default function CheckoutPopup() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">Address</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                  Address
+                </label>
                 <input
                   type="text"
                   name="address"
@@ -92,7 +105,9 @@ export default function CheckoutPopup() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">City</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    City
+                  </label>
                   <input
                     type="text"
                     name="city"
@@ -103,7 +118,9 @@ export default function CheckoutPopup() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">Postal Code</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Postal Code
+                  </label>
                   <input
                     type="text"
                     name="postalCode"
@@ -115,7 +132,9 @@ export default function CheckoutPopup() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Country</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Country
+                </label>
                 <select
                   name="country"
                   value={formData.country}
@@ -134,7 +153,9 @@ export default function CheckoutPopup() {
 
             {/* Payment Method */}
             <div className="mt-8">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">Payment Method</h3>
+              <h3 className="text-lg font-semibold text-blue-900 mb-4">
+                Payment Method
+              </h3>
 
               <div className="flex gap-2 mb-4">
                 <button
@@ -175,7 +196,9 @@ export default function CheckoutPopup() {
               {paymentMethod === 'credit-card' && (
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">Card Number</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">
+                      Card Number
+                    </label>
                     <input
                       type="text"
                       name="cardNumber"
@@ -187,7 +210,9 @@ export default function CheckoutPopup() {
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1">Expiry Date</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">
+                        Expiry Date
+                      </label>
                       <input
                         type="text"
                         name="expiryDate"
@@ -198,7 +223,9 @@ export default function CheckoutPopup() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1">CVV</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1">
+                        CVV
+                      </label>
                       <input
                         type="text"
                         name="cvv"
@@ -228,7 +255,9 @@ export default function CheckoutPopup() {
 
           {/* Right Column - Delivery Options & Order Summary */}
           <div className="pl-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-4">Delivery Options</h3>
+            <h3 className="text-lg font-semibold text-blue-900 mb-4">
+              Delivery Options
+            </h3>
 
             <div className="space-y-4 mb-6">
               <button
@@ -258,7 +287,9 @@ export default function CheckoutPopup() {
               </button>
             </div>
 
-            <h3 className="text-lg font-semibold text-blue-900 mb-4">Order Summary</h3>
+            <h3 className="text-lg font-semibold text-blue-900 mb-4">
+              Order Summary
+            </h3>
 
             <div className="space-y-3 mb-6">
               {cartItems.map((item) => (
@@ -273,8 +304,12 @@ export default function CheckoutPopup() {
                     />
                   </div>
                   <div className="flex-1">
-                    <p className="font-medium text-sm text-gray-900">{item.name}</p>
-                    <p className="text-xs text-gray-500">Quantity: {item.quantity}</p>
+                    <p className="font-medium text-sm text-gray-900">
+                      {item.name}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Quantity: {item.quantity}
+                    </p>
                   </div>
                   <p className="text-sm font-medium">
                     Rs. {(item.unitPrice * item.quantity).toLocaleString()}
@@ -290,7 +325,9 @@ export default function CheckoutPopup() {
               </div>
               <div className="flex justify-between text-sm">
                 <span>Discount</span>
-                <span className="text-green-600">-Rs. {discount.toLocaleString()}</span>
+                <span className="text-green-600">
+                  -Rs. {discount.toLocaleString()}
+                </span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Shipping</span>

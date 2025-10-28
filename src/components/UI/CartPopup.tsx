@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ShoppingCart, Trash2, Receipt, X } from 'lucide-react';
 import { useModal } from '../../components/contexts/ModalContext';
 import Image from 'next/image';

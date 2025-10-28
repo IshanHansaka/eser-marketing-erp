@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import CartPopup from '../UI/CartPopup';
 import CheckoutPopup from '../UI/CheckoutPopup';
 
