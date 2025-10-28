@@ -1,9 +1,9 @@
-import CartPopup from '@/components/UI/CartPopup';
+import LandingPage from '@/components/layouts/LandingPage';
 
 export default function Home() {
   return (
     <div>
-      <CartPopup />
+      <LandingPage />
     </div>
   );
 }
