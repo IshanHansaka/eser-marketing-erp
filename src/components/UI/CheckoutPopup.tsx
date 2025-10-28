@@ -37,9 +37,9 @@ export default function CheckoutPopup() {
 
   return (
     <div className="fixed inset-0 bg-[#DCDCDC] bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[100vh] overflow-y-auto">
+      <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-screen overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white px-6 py-4 flex justify-between items-center relative">
+        <div className="top-0 bg-white px-6 py-4 flex justify-between items-center relative">
           <div className="w-6"></div>
           <h2 className="absolute left-1/2 -translate-x-1/2 text-3xl font-bold text-blue-900 mt-8">Order Now!</h2>
           <button 
