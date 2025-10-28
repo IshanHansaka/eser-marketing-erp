@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import NotificationModal from '../layouts/NotificationModal';
+import { useModal } from '../../components/contexts/ModalContext';
 
 export default function CustomerHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,6 +44,8 @@ export default function CustomerHeader() {
     );
   };
 
+  const { openCart } = useModal();
+
   return (
     <div className="w-screen flex justify-end gap-8 py-6 pr-16">
       <button
@@ -68,12 +71,14 @@ export default function CustomerHeader() {
         notifications={notifications}
         onDismissNotification={handleDismissNotification}
       />
-      <Image
-        src="/icons/shopping-cart.svg"
-        width={32}
-        height={32}
-        alt="shopping cart"
-      />
+      <button onClick={openCart} className="p-2 cursor-pointer" aria-label="Open cart">
+        <Image
+          src="/icons/shopping-cart.svg"
+          width={32}
+          height={32}
+          alt="shopping cart"
+        />
+      </button>
       <div className="flex gap-3 items-center ml-8">
         <Image
           src="/images/profile-pic.svg"
